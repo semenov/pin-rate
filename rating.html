@@ -277,7 +277,7 @@
             
             var api_key = 'rudvjt8277';
             var project = 'Новосибирск';
-            var point = '82.9522579998109, 55.0182229073986';
+            var point = '82.8973495299875, 54.9801322040422';
             //http://catalog.api.2gis.ru/searchinrubric?what=хостинг&where=новосибирск&page=1&pagesize=30&sort=relevance&version=1.3&key=1234567890
             
             $(function() {
@@ -321,7 +321,8 @@
                     });
                 });
 
-                async.parallel(searches, function() {
+                //async.parallel(searches, function() {
+                async.series(searches, function() {
                     console.log(results);
                     var rating = 0;
                     $.each(pinRubrics, function(index, value) {
