@@ -50,6 +50,9 @@ $(function() {
         }
     };
 
+    var notFound = $('.address__nothing-found');
+    notFound.hide();
+
     $('#map').addClass('map_position_b');
 
     window.setTimeout(function() {
@@ -63,12 +66,19 @@ $(function() {
 
     $('#address_form').on('submit', function(e) {
         e.preventDefault();
+
+        notFound.hide();
+        selectPanel.collapse();
         
         var query = $('#address_address').val();   
         console.log('Ready to search', query);
 
         search(query, function(err, houses) {
             console.log('search finished', houses);
+            if (err) {
+                notFound.show();
+                return;
+            }
 
             var prefix = 'Новосибирск, ';
 
@@ -134,12 +144,16 @@ $(function() {
                 output: 'jsonp'
             }
         }).done(function(response) {
-            callback(null, response.result);
+            if (response.response_code != 200) {
+                callback(true);
+            } else {
+                callback(null, response.result);
+            }
         });
     }
 
     function calculateRating(house) {
-        console.log('Calculating rating', house.id);
+        console.log('Calculating rating', house);
         selectPanel.collapse();
         sideBar.collapse();
         resultPanel.expand();
