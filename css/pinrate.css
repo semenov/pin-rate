@@ -502,7 +502,6 @@ body {
                     color: #f26c4f;
                 }
 
-
 /* address */
 .address {
     font-size: 0;
@@ -517,7 +516,7 @@ body {
     }
     .address__item_city {
         background-color: transparent;
-        margin-bottom: 47px;
+        margin-bottom: 11px;
         text-align: center;
     }
     .address__item_submit {
@@ -589,7 +588,12 @@ body {
     .address__submit:active {
         background-color: #d23c23;
     }
-
+    .address__nothing-found {
+        margin-top: 44px;
+        color: #fff;
+        font-size: 16px;
+        text-align: center;
+    }
 
 /* authors */
 .authors {
@@ -781,3 +785,61 @@ body {
         .results__item .icon {
             margin-right: 11px;
         }
+
+
+/* Сброс стилей коллаута лифлета */
+.leaflet-popup-content-wrapper {
+    padding:0;
+    border-radius: 0;
+    background: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: #e6e6e6;
+}
+.leaflet-popup-content {
+    margin: 0;
+}
+.leaflet-popup-tip {
+    display: none;
+}
+.leaflet-popup-tip-container {
+    height: 0px;
+}
+
+.callout {
+    position: relative;
+    /*
+    Коллаут можно двигать в пространстве
+    top: 200px;
+    left: 200px;
+    */
+    display: inline-block;
+    max-width: 190px;
+    padding: 20px 20px 0 20px;
+    background: #333;
+    font-family: 'PT Sans', 'Arial';
+    font-size: 16px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+}
+.callout:after {
+    content: '';
+    display: inline-block;
+    position: relative;
+    bottom: -9px;
+    width: 8px;
+    height: 8px;
+    background: inherit;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+}
+.callout__button {
+    margin-top: 20px;
+    padding: 8px 30px 6px;
+    background: #f26c4f;
+    font-size: 14px;
+    cursor: pointer;
+}
