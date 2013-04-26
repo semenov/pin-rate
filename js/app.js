@@ -39,6 +39,16 @@ $(function() {
         }
     };
 
+    var resultPanel = {
+        expand: function() {
+            $('#result').addClass('result_visible');
+        },
+
+        collapse: function() {
+            $('#result').removeClass('result_visible');
+        }
+    };
+
     $('#map').addClass('map_position_b');
 
     window.setTimeout(function() {
@@ -75,6 +85,14 @@ $(function() {
 
             selectPanel.expand();
         });
+    });
+
+    $('body').on('click', '.address_link', function(e) {
+        e.preventDefault();
+
+        console.log('address_link click');
+        var geoId = $(this).data('id');  
+        calculateRating(geoId);  
     });
 
     var mapOptions = {
@@ -115,5 +133,10 @@ $(function() {
         }).done(function(response) {
             callback(null, response.result);
         });
+    }
+
+    function calculateRating(geoId) {
+        console.log('Calculating rating', geoId);
+        resultPanel.expand();
     }
 });

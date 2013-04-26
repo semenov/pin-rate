@@ -448,7 +448,7 @@ body {
 }
     .select-panel__in {
         border-left: 1px solid #494949;
-        height: 550px;
+        height: 100%
         left: 0;
         overflow: hidden;
         position: relative;
