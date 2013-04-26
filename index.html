@@ -13,22 +13,16 @@
 
     <link rel="icon" type="image/png" href="i/favicon.png" />
 
-    <script src="http://maps.api.2gis.ru/1.0"></script>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.ie.css" /><![endif]-->
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.placeholder.min.js"></script>
     <script src="js/baron.js"></script>
     <script src="js/application-prototype.js"></script>
 
     <script>
-        DG.autoload(function() {
-            application.initialize({
-                geolocation: {
-                    'country'   : '<?=$clientCityInfo["country"]?>',
-                    'city'      : 'Moscow'
-                }
-            });
-        });
-
         $(document).ready(function() {
             baron({
                 scroller: $('.baron-scroller'),
@@ -38,7 +32,8 @@
         });
     </script>
 
-
+    <script src="js/baron.min.js"></script>
+    <script src="js/app.js"></script>
 </head>
 <body>
 
