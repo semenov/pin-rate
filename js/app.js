@@ -35,7 +35,7 @@ $(function() {
         },
 
         collapse: function() {
-             $('#sidebar').addClass('sidebar_select-panel_visible');
+             $('#sidebar').removeClass('sidebar_select-panel_visible');
         }
     };
 
@@ -137,6 +137,8 @@ $(function() {
 
     function calculateRating(geoId) {
         console.log('Calculating rating', geoId);
+        selectPanel.collapse();
+        sideBar.collapse();
         resultPanel.expand();
     }
 });
