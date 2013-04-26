@@ -443,7 +443,7 @@ body {
     -webkit-transition: width 0.5s cubic-bezier(.17, .52, .04, 1);
     width: 0;
 }
-.sidebar_select-panel_visible .select-panel {
+.sidebar_select-panel_visible .select-panel { /* Включение панельки списка результатов (городов) */
     width: 350px;
 }
     .select-panel__in {
@@ -481,12 +481,12 @@ body {
             padding: 0 14px 0 21px;
             width: 302px;
         }
-            .select-panel__list_cityselect .list__item {
+            .select-panel__list_cityselect .list__item { /* Класс для тега li внутри списка select-panel__list select-panel__list_cityselect list */
                 height: 32px;
                 margin-bottom: 4px;
                 white-space: nowrap;
             }
-                .select-panel__list .link {
+                .select-panel__list .link { /* Класс для тега-ссылки внутри li */
                     background-color: rgba(70, 70, 70, 0);
                     color: #fafafa;
                     display: block;
