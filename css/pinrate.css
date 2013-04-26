@@ -477,7 +477,7 @@ body {
                 }
 
         .select-panel__list {
-            display: none;
+            /*display: none;*/
             padding: 0 14px 0 21px;
             width: 302px;
         }

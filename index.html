@@ -20,7 +20,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.placeholder.min.js"></script>
     <script src="js/baron.js"></script>
-    <script src="js/application-prototype.js"></script>
+    <script src="js/handlebars.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -85,7 +85,10 @@
                         <div class="baron-scroller">
                             <div class="baron-container">
                                 <ul class="select-panel__list select-panel__list_cityselect list" id="cityselect"></ul>
-                                <ul class="select-panel__list select-panel__list_places list" id="places"></ul>
+                                <ul class="select-panel__list select-panel__list_places list" id="places">
+                                    <li>lol</li>
+                                    <li>lol 2</li>
+                                </ul>
                             </div>
 
                             <div class="baron-scroller__bar baron-scroller__bar_state_on"></div>
@@ -171,6 +174,11 @@
         </div>
 
     </div>
-    
+
+    <script id="addressListTemplate" type="text/x-handlebars-template">
+        {{#each houses}}
+            <ul><a href="#" class="link">{{name}}</a></ul>
+        {{/each}}
+    </script>
 </body>
 </html>
