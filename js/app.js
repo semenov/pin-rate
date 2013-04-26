@@ -92,7 +92,7 @@ $(function() {
                 }
             }
 
-            var addressList = renderTemplate('addressList', { houses: houses });
+            var addressList = renderTemplate('addressList', {houses: houses});
             $('#places').html(addressList);
 
             selectPanel.expand();
@@ -104,6 +104,7 @@ $(function() {
 
         var geoId = $(this).data('id');
         console.log('address_link click', geoId, housesById); 
+
         var house = housesById[geoId];
         calculateRating(house);  
     });
@@ -135,7 +136,7 @@ $(function() {
             url: 'http://catalog.api.2gis.ru/geo/search',
             dataType: 'jsonp',
             data: {
-                key: 1,
+                key: api_key,
                 version: '1.3',
                 q: query,
                 project: 1,
@@ -153,9 +154,69 @@ $(function() {
     }
 
     function calculateRating(house) {
-        console.log('Calculating rating', house);
-        selectPanel.collapse();
-        sideBar.collapse();
-        resultPanel.expand();
+        console.log('Calculating rating', house.centroid);
+
+        var point_parsed = /POINT\((.*)\s(.*)\)/i.exec(house.centroid),
+            point = point_parsed[1] + ',' + point_parsed[2];
+
+        var searches = [];
+        var results = [];
+        $.each(pinRubrics, function(pinIndex, pinValue) {
+            if(!results[pinIndex]) {
+                results[pinIndex] = {
+                    total: 0,
+                    firms: []
+                };
+            }
+            $.each(pinValue.rubrics, function(index, value) {
+
+                var searchFunction = function(callback) {
+                    var params = {
+                        what: value,
+                        point: point,
+                        radius: pinValue.radius,
+                        key: api_key,
+                        output: 'jsonp',
+                        page: 1,
+                        pagesize: 50,
+                        version: '1.3',
+                        sort: 'relevance'
+                    };
+                    $.getJSON('http://catalog.api.2gis.ru/search?callback=?', params, function(data) {
+
+                        results[pinIndex].total += data.response_code == '200' ? parseInt(data.total) : 0;
+                        results[pinIndex].firms = data.result;
+
+                        callback();
+                    });
+                }
+                searches.push(searchFunction);
+
+            });
+        });
+
+        async.series(searches, function() {
+            var rating = 0;
+            $.each(pinRubrics, function(index, value) {
+                if(results[index].total > 0  && pinRubrics[index].inRating )
+                    rating += 3.08;
+            });
+
+            $.each(pinRubrics, function(index, value) {
+                if(results[index].total == 0 && pinRubrics[index].inRating )
+                    rating *= pinRubrics[index].minus;
+            });
+
+            $.each(pinRubrics, function(index, value) {
+                if(results[index].total > 1 && pinRubrics[index].inRating )
+                    rating *= pinRubrics[index].plus;
+            });
+
+            console.log( '=====================' + rating + '=====================' );
+
+            selectPanel.collapse();
+            sideBar.collapse();
+            resultPanel.expand();
+        });
     }
 });
