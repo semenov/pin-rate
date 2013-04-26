@@ -1,0 +1,12 @@
+.baron-wrapper {
+	overflow: hidden;
+}
+.baron-scroller {
+	overflow-y: scroll;
+}
+.baron-scroller__bar {
+	display: none;
+}
+.baron-scroller_state_on .baron-scroller__bar {
+	display: block;
+}

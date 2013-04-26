@@ -9,13 +9,14 @@
 
     <!-- styles -->
     <link rel="stylesheet" href="css/pinrate.css" media="all" />
+    <link rel="stylesheet" href="css/baron.css" media="all" />
 
     <link rel="icon" type="image/png" href="i/favicon.png" />
 
     <script src="http://maps.api.2gis.ru/1.0"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.placeholder.min.js"></script>
-    <script src="js/baron.min.js"></script>
+    <script src="js/baron.js"></script>
     <script src="js/application-prototype.js"></script>
 
     <script>
@@ -25,6 +26,14 @@
                     'country'   : '<?=$clientCityInfo["country"]?>',
                     'city'      : 'Moscow'
                 }
+            });
+        });
+
+        $(document).ready(function() {
+            baron({
+                scroller: $('.baron-scroller'),
+                bar: '.baron-scroller__bar',
+                barOnCls: 'baron-scroller_state_on'
             });
         });
     </script>
