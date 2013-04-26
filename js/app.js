@@ -80,22 +80,28 @@ $(function() {
                 return;
             }
 
-            var prefix = 'Новосибирск, ';
+            if (houses.length == 1) {
+                var house = houses[0];
+                calculateRating(house); 
 
-            for (var i = 0; i < houses.length; i++) {
-                var house = houses[i];
-                housesById[house.id] = house;
-                var hasPrefix = (house.name.slice(0, prefix.length) == prefix);
+            } else {
+                var prefix = 'Новосибирск, ';
 
-                if (hasPrefix) {
-                    house.name = house.name.slice(prefix.length);
+                for (var i = 0; i < houses.length; i++) {
+                    var house = houses[i];
+                    housesById[house.id] = house;
+                    var hasPrefix = (house.name.slice(0, prefix.length) == prefix);
+
+                    if (hasPrefix) {
+                        house.name = house.name.slice(prefix.length);
+                    }
                 }
+
+                var addressList = renderTemplate('addressList', {houses: houses});
+                $('#places').html(addressList);    
+
+                selectPanel.expand();            
             }
-
-            var addressList = renderTemplate('addressList', {houses: houses});
-            $('#places').html(addressList);
-
-            selectPanel.expand();
         });
     });
 
