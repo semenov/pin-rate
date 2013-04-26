@@ -212,7 +212,8 @@ $(function() {
                     rating *= pinRubrics[index].plus;
             });
 
-            console.log( '=====================' + rating + '=====================' );
+            rating = rating > 100 ? 100 : rating;
+            $('#rating_result').html( Math.round(rating) + '%' );
 
             selectPanel.collapse();
             sideBar.collapse();
