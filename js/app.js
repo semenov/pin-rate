@@ -1,6 +1,7 @@
 $(function() {
 
     var map;
+    var housesById = {};
 
     var sideBar = {
 
@@ -73,6 +74,7 @@ $(function() {
 
             for (var i = 0; i < houses.length; i++) {
                 var house = houses[i];
+                housesById[house.id] = house;
                 var hasPrefix = (house.name.slice(0, prefix.length) == prefix);
 
                 if (hasPrefix) {
@@ -90,9 +92,10 @@ $(function() {
     $('body').on('click', '.address_link', function(e) {
         e.preventDefault();
 
-        console.log('address_link click');
-        var geoId = $(this).data('id');  
-        calculateRating(geoId);  
+        var geoId = $(this).data('id');
+        console.log('address_link click', geoId, housesById); 
+        var house = housesById[geoId];
+        calculateRating(house);  
     });
 
     var mapOptions = {
@@ -135,8 +138,8 @@ $(function() {
         });
     }
 
-    function calculateRating(geoId) {
-        console.log('Calculating rating', geoId);
+    function calculateRating(house) {
+        console.log('Calculating rating', house.id);
         selectPanel.collapse();
         sideBar.collapse();
         resultPanel.expand();
