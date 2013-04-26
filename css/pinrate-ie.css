@@ -1,0 +1,8 @@
+.icon,
+.address__item_street,
+.address__item_house,
+.authors__author,
+.social_result .socual__service,
+.categories_result .categories__category {
+	display: inline;
+}
