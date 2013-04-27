@@ -156,7 +156,7 @@ $(function() {
             housesById[house.id] = house;
             house.name = stripCityFromAddress(house.name);
 
-            var html = renderTemplate('callout', { house: house })
+            var html = renderTemplate('callout', {house: house})
 
             popup = L.popup()
                 .setLatLng(point)
@@ -307,28 +307,25 @@ $(function() {
     
     function placeMarkers(firms) {
         
+        var markers = {};
+        
         var firmMarkers = new L.MarkerClusterGroup({
             showCoverageOnHover: false,
-            maxClusterRadius: 40,
+            maxClusterRadius: 30,
             iconCreateFunction: function(cluster) {
-                return new L.DivIcon({ html: '<div class="map__cluster">' + cluster.getChildCount() + '</div>' });
+                return new L.DivIcon({html: '<div class="map__cluster">' + cluster.getChildCount() + '</div>'});
             }
         });
 
         map.addLayer(firmMarkers);
         
         $.each(pinRubrics, function (pinIndex, pinValue) {
-            
             if(firms[pinIndex].firms) {
                 $.each(firms[pinIndex].firms, function (firmsIndex, firmsValue) {
 
                     var icon = L.divIcon({
-                        //iconUrl: '/assets/map/marker.png',
-                        //shadowUrl: '/assets/map/marker-shadow.png',
                         iconSize: [47, 47],
-                        //shadowSize: [36, 12],
                         iconAnchor: [12, 40],
-                        //shadowAnchor: [18, 10],
                         className: 'map__marker',
                         html: '<div class="icon ' + pinRubrics[pinIndex].idetify + '"></div>'
                     }),
@@ -339,12 +336,19 @@ $(function() {
                     };
 
                     var marker = L.marker(markerPosition, markerOptions);
-                    firmMarkers.addLayer(marker);
+                    
+                    if( markers[firmsValue.lat + ' ' + firmsValue.lon] && Math.random() > 0.5 ) {
+                        markers[firmsValue.lat + ' ' + firmsValue.lon] = marker;
+                    } else {
+                        markers[firmsValue.lat + ' ' + firmsValue.lon] = marker;
+                    }
                 });
             }
         });
         
-        
+        $.each(markers, function (index, marker) {
+            firmMarkers.addLayer(marker);
+        });
         
     }
 });
