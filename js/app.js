@@ -42,12 +42,24 @@ $(function() {
     };
 
     var resultPanel = {
+        expanded: false,
+
         expand: function() {
             $('#result').addClass('result_visible');
+            resultPanel.expanded = true;
         },
 
         collapse: function() {
             $('#result').removeClass('result_visible');
+            resultPanel.expanded = false;
+        },
+
+        toggle: function() {
+            if (resultPanel.expanded) {
+                resultPanel.collapse();
+            } else {
+                resultPanel.expand();
+            }   
         }
     };
 
@@ -63,6 +75,10 @@ $(function() {
 
     $('#sidebar_toggle').on('click', function() {
         sideBar.toggle();       
+    });
+
+    $('#result_toggle').on('click', function() {
+        resultPanel.toggle();       
     });
 
     $('#address_form').on('submit', function(e) {
