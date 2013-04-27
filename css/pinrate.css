@@ -851,5 +851,13 @@ body {
 .map__cluster {
     width: 47px;
     height: 47px;
-    background: url(../i/app-sprite.png) -9px -132px no-repeat;    
+    background: url(../i/app-sprite.png) -9px -132px no-repeat;
+    text-align: center;
+    padding-top: 8px;
+    font-size: 21px;
+}
+
+.leaflet-div-icon {
+    background: none;
+    border: none;
 }
