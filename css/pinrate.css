@@ -847,3 +847,9 @@ body {
     font-size: 14px;
     cursor: pointer;
 }
+
+.map__cluster {
+    width: 47px;
+    height: 47px;
+    background: url(../i/app-sprite.png) -9px -132px no-repeat;    
+}

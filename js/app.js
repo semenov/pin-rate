@@ -259,8 +259,8 @@ $(function() {
 
         async.series(searches, function() {
             var rating = 0;
-            $.each(pinRubrics, function(index, value) {
-                $( pinRubrics[index].idetify ).html(results[index].total);
+            $.each(pinRubrics, function(index, value) {                
+                $( '.icon.' + pinRubrics[index].idetify + ' ~ span span' ).html( results[index].total );
 
                 if(results[index].total > 0  && pinRubrics[index].inRating )
                     rating += 3.08;
@@ -279,11 +279,56 @@ $(function() {
             rating = rating > 100 ? 100 : rating;
             $('#rating_result').html( Math.round(rating) + '%' );
 
+            placeMarkers(results);
+
             $("#preloader").hide();
 
             selectPanel.collapse();
             sideBar.collapse();
             resultPanel.expand();
         });
+    }
+    
+    function placeMarkers(firms) {
+        
+        var firmMarkers = new L.MarkerClusterGroup({
+            showCoverageOnHover: false,
+            maxClusterRadius: 40,
+            iconCreateFunction: function(cluster) {
+                return new L.DivIcon({ html: '<div class="map__cluster">' + cluster.getChildCount() + '</div>' });
+            }
+        });
+
+        map.addLayer(firmMarkers);
+        
+        $.each(pinRubrics, function (pinIndex, pinValue) {
+            
+            if(firms[pinIndex].firms) {
+                $.each(firms[pinIndex].firms, function (firmsIndex, firmsValue) {
+
+                    var icon = L.divIcon({
+                        //iconUrl: '/assets/map/marker.png',
+                        //shadowUrl: '/assets/map/marker-shadow.png',
+                        iconSize: [47, 47],
+                        //shadowSize: [36, 12],
+                        iconAnchor: [12, 40],
+                        //shadowAnchor: [18, 10],
+                        className: 'map__marker',
+                        html: '<div class="icon ' + pinRubrics[pinIndex].idetify + '"></div>'
+                    }),
+                    markerPosition = [firmsValue.lat, firmsValue.lon],
+                    markerOptions = {
+                        icon: icon,
+                        draggable: false
+                    };
+
+                    var marker = L.marker(markerPosition, markerOptions);
+                    firmMarkers.addLayer(marker);
+                });
+            }
+        });
+        
+        
+        
     }
 });

@@ -8,7 +8,7 @@ var pinRubrics = [
         plus: 1,
         minus: 0.9,
         inRating: true,
-        idetify: '.icon.icon_housing-department ~ span span'
+        idetify: 'icon_housing-department'
     },
     {
         name: 'Почта',
@@ -19,7 +19,7 @@ var pinRubrics = [
         plus: 1,
         minus: 0.9,
         inRating: true,
-        idetify: '.icon.icon_housing-department ~ span span'
+        idetify: 'icon_post-office'
     },
     {
         name: 'Банки',
@@ -30,7 +30,7 @@ var pinRubrics = [
         plus: 1,
         minus: 1,
         inRating: true,
-        idetify: '.icon.icon_post-office ~ span span'
+        idetify: 'icon_bank'
     },
     {
         name: 'Банкоматы',
@@ -41,7 +41,7 @@ var pinRubrics = [
         plus: 1,
         minus: 1,
         inRating: true,
-        idetify: '.icon.icon_ATM ~ span span'
+        idetify: 'icon_ATM'
     },
     {
         name: 'Парикмахерские',
@@ -52,7 +52,7 @@ var pinRubrics = [
         plus: 1,
         minus: 1,
         inRating: true,
-        idetify: '.icon.icon_barber ~ span span'
+        idetify: 'icon_barber'
     },
     {
         name: 'Стоянки',
@@ -63,7 +63,7 @@ var pinRubrics = [
         plus: 1.1,
         minus: 1,
         inRating: false,
-        idetify: '.icon.icon_parking ~ span span'
+        idetify: 'icon_parking'
     },
     {
         name: 'Аптеки',
@@ -74,7 +74,7 @@ var pinRubrics = [
         plus: 1,
         minus: 0.9,
         inRating: true,
-        idetify: '.icon.icon_pharmacy ~ span span'
+        idetify: 'icon_pharmacy'
     },
     {
         name: 'Больницы',
@@ -89,7 +89,7 @@ var pinRubrics = [
         plus: 1,
         minus: 0.9,
         inRating: true,
-        idetify: '.icon.icon_health ~ span span'
+        idetify: 'icon_health'
     },
     {
         name: 'Бары',
@@ -100,7 +100,7 @@ var pinRubrics = [
         plus: 1.1,
         minus: 1,
         inRating: true,
-        idetify: '.icon.icon_taproom ~ span span'
+        idetify: 'icon_taproom'
     },
     {
         name: 'Кафе',
@@ -111,7 +111,7 @@ var pinRubrics = [
         plus: 1.1,
         minus: 1,
         inRating: true,
-        idetify: '.icon.icon_diningroom ~ span span'
+        idetify: 'icon_diningroom'
     },
     {
         name: 'Кондитерские',
@@ -122,7 +122,7 @@ var pinRubrics = [
         plus: 1.1,
         minus: 1,
         inRating: true,
-        idetify: '.icon.icon_confectionery ~ span span'
+        idetify: 'icon_confectionery'
     },
     {
         name: 'Кофейни',
@@ -133,7 +133,7 @@ var pinRubrics = [
         plus: 1.1,
         minus: 1,
         inRating: true,
-        idetify: '.icon.icon_coffeehouse ~ span span'
+        idetify: 'icon_coffeehouse'
     },
     {
         name: 'Бассейны',
@@ -144,7 +144,7 @@ var pinRubrics = [
         plus: 1,
         minus: 1,
         inRating: true,
-        idetify: '.icon.icon_swimming-pool ~ span span'
+        idetify: 'icon_swimming-pool'
     },
     {
         name: 'Спортшколы',
@@ -155,7 +155,7 @@ var pinRubrics = [
         plus: 1,
         minus: 1,
         inRating: true,
-        idetify: '.icon.icon_sports-school ~ span span'
+        idetify: 'icon_sports-school'
     },
     {
         name: 'Фитнес',
@@ -166,7 +166,7 @@ var pinRubrics = [
         plus: 1,
         minus: 1,
         inRating: true,
-        idetify: '.icon.icon_fitness-center ~ span span'
+        idetify: 'icon_fitness-center'
     },
     {
         name: 'Стадионы',
@@ -177,7 +177,7 @@ var pinRubrics = [
         plus: 1,
         minus: 1,
         inRating: true,
-        idetify: '.icon.icon_stadium ~ span span'
+        idetify: 'icon_stadium'
     },
     {
         name: 'Образование',
@@ -188,7 +188,7 @@ var pinRubrics = [
         plus: 1,
         minus: 0.9,
         inRating: true,
-        idetify: '.icon.icon_education ~ span span'
+        idetify: 'icon_education'
     },
     {
         name: 'Детские сады',
@@ -199,7 +199,7 @@ var pinRubrics = [
         plus: 1,
         minus: 0.9,
         inRating: true,
-        idetify: '.icon.icon_kindergarten ~ span span'
+        idetify: 'icon_kindergarten'
     },
     {
         name: 'Боулинг',
@@ -210,7 +210,7 @@ var pinRubrics = [
         plus: 1.1,
         minus: 1,
         inRating: true,
-        idetify: '.icon.icon_bowling ~ span span'
+        idetify: 'icon_bowling'
     },
     {
         name: 'Кино',
@@ -221,7 +221,7 @@ var pinRubrics = [
         plus: 1.1,
         minus: 1,
         inRating: true,
-        idetify: '.icon.icon_cinema ~ span span'
+        idetify: 'icon_cinema'
     },
     {
         name: 'Парки',
@@ -232,7 +232,7 @@ var pinRubrics = [
         plus: 1.1,
         minus: 1,
         inRating: false,
-        idetify: '.icon.icon_park ~ span span'
+        idetify: 'icon_park'
     },
     {
         name: 'Театры',
@@ -243,7 +243,7 @@ var pinRubrics = [
         plus: 1.1,
         minus: 1,
         inRating: false,
-        idetify: '.icon.icon_theater ~ span span'
+        idetify: 'icon_theater'
     },
     {
         name: 'Гипермаркеты',
@@ -254,7 +254,7 @@ var pinRubrics = [
         plus: 1,
         minus: 1,
         inRating: false,
-        idetify: '.icon.icon_hypermarket ~ span span'
+        idetify: 'icon_hypermarket'
     },
     {
         name: 'Продукты',
@@ -265,7 +265,7 @@ var pinRubrics = [
         plus: 1,
         minus: 1,
         inRating: true,
-        idetify: '.icon.icon_grocery ~ span span'
+        idetify: 'icon_grocery'
     },
     {
         name: 'Супермаркеты',
@@ -276,7 +276,7 @@ var pinRubrics = [
         plus: 1,
         minus: 1,
         inRating: true,
-        idetify: '.icon.icon_supermarket ~ span span'
+        idetify: 'icon_supermarket'
     },
     {
         name: 'Торговые центры',
@@ -287,7 +287,7 @@ var pinRubrics = [
         plus: 1,
         minus: 1,
         inRating: true,
-        idetify: '.icon.icon_shopping-center ~ span span'
+        idetify: 'icon_shopping-center'
     }
 
 ];
