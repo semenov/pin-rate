@@ -2,6 +2,7 @@ $(function() {
 
     var map;
     var housesById = {};
+    var popup;
 
     var sideBar = {
 
@@ -90,11 +91,7 @@ $(function() {
                 for (var i = 0; i < houses.length; i++) {
                     var house = houses[i];
                     housesById[house.id] = house;
-                    var hasPrefix = (house.name.slice(0, prefix.length) == prefix);
-
-                    if (hasPrefix) {
-                        house.name = house.name.slice(prefix.length);
-                    }
+                    house.name = stripCityFromAddress(house.name);
                 }
 
                 var addressList = renderTemplate('addressList', {houses: houses});
@@ -115,6 +112,8 @@ $(function() {
         calculateRating(house);  
     });
 
+    // 
+
     var mapOptions = {
         zoomControl: false
     };
@@ -129,6 +128,48 @@ $(function() {
     map.setView([55.026472, 82.921475], 13);
     console.log('Map inited');
 
+    map.on('click', function(e) {
+        var point = e.latlng;
+        houseByPoint(point, function(err, house) {
+            console.log('houseByPoint', err, house);
+            
+            if (err) {
+                return err;
+            }
+
+            housesById[house.id] = house;
+            house.name = stripCityFromAddress(house.name);
+
+            var html = renderTemplate('callout', { house: house })
+
+            popup = L.popup()
+                .setLatLng(point)
+                .setContent(html)
+                .openOn(map);  
+
+            $('.callout__button').on('click', function(e) {
+                e.preventDefault();
+
+                var geoId = $(this).data('id');
+                console.log('callout__button click', geoId, housesById); 
+
+                var house = housesById[geoId];
+
+                calculateRating(house);  
+            }); 
+        });
+    });
+
+    function stripCityFromAddress(address) {
+        var prefix = 'Новосибирск, ';
+        var hasPrefix = (address.slice(0, prefix.length) == prefix);
+
+        if (hasPrefix) {
+            return address.slice(prefix.length);
+        } else {
+            return address;
+        }
+    }
 
     function renderTemplate(template, data) {
         var templateSource = $('#' + template + 'Template').html();
@@ -137,7 +178,6 @@ $(function() {
     }
 
     function search(query, callback) {
-        // http://catalog.api.2gis.ru/geo/search
         $.ajax({
             url: 'http://catalog.api.2gis.ru/geo/search',
             dataType: 'jsonp',
@@ -156,6 +196,19 @@ $(function() {
             } else {
                 callback(null, response.result);
             }
+        });
+    }
+
+    function houseByPoint(point, callback) {
+        var query = point.lng + ',' + point.lat;
+        search(query, function(err, houses) {
+            var house;
+
+            if (!err && $.isArray(houses)) {
+                house = houses[0];
+            }
+
+            callback(err, house);
         });
     }
 

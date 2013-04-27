@@ -8,13 +8,13 @@
     <title>Инфраструктура и рейтинг дома — PIN RATE</title>
 
     <!-- styles -->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.ie.css" /><![endif]-->
+
     <link rel="stylesheet" href="css/pinrate.css" media="all" />
     <link rel="stylesheet" href="css/baron.css" media="all" />
 
     <link rel="icon" type="image/png" href="i/favicon.png" />
-
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
-    <!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.ie.css" /><![endif]-->
 
     <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
     <script src="js/jquery.min.js"></script>
@@ -180,6 +180,15 @@
         {{#each houses}}
             <ul><a href="#" class="link address_link" data-id="{{id}}">{{name}}</a></ul>
         {{/each}}
+    </script>
+
+    <script id="calloutTemplate" type="text/x-handlebars-template">
+        <div class="callout">
+            {{#if house.name}}
+                <div class="callout__title">{{house.name}}</div>
+            {{/if}}
+            <div class="callout__button" data-id="{{house.id}}">Узнать рейтинг</div>
+        </div>
     </script>
 </body>
 </html>

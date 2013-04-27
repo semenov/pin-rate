@@ -836,8 +836,12 @@ body {
     -webkit-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
 }
+
+.callout__title {
+    margin-bottom: 20px;
+}
+
 .callout__button {
-    margin-top: 20px;
     padding: 8px 30px 6px;
     background: #f26c4f;
     font-size: 14px;
