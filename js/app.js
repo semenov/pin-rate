@@ -201,6 +201,8 @@ $(function() {
             });
         });
 
+        $("#preloader").show();
+
         async.series(searches, function() {
             var rating = 0;
             $.each(pinRubrics, function(index, value) {
@@ -222,6 +224,8 @@ $(function() {
 
             rating = rating > 100 ? 100 : rating;
             $('#rating_result').html( Math.round(rating) + '%' );
+
+            $("#preloader").hide();
 
             selectPanel.collapse();
             sideBar.collapse();
