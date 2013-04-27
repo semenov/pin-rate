@@ -179,7 +179,13 @@
 
     <script id="addressListTemplate" type="text/x-handlebars-template">
         {{#each houses}}
-            <ul><a href="#" class="link address_link" data-id="{{id}}">{{name}}</a></ul>
+            <li class="list__item"><a href="#" class="link address_link" data-id="{{id}}">{{name}}</a></li>
+        {{/each}}
+    </script>
+
+    <script id="projectListTemplate" type="text/x-handlebars-template">
+        {{#each projects}}
+            <li class="list__item"><a href="#" class="link city_link" data-id="{{id}}">{{name}}</a></li>
         {{/each}}
     </script>
 

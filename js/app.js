@@ -3,6 +3,7 @@ $(function() {
     var map;
     var housesById = {};
     var popup;
+    var projectsById = {};
 
     var sideBar = {
 
@@ -102,8 +103,6 @@ $(function() {
                 calculateRating(house); 
 
             } else {
-                var prefix = 'Новосибирск, ';
-
                 for (var i = 0; i < houses.length; i++) {
                     var house = houses[i];
                     housesById[house.id] = house;
@@ -111,10 +110,28 @@ $(function() {
                 }
 
                 var addressList = renderTemplate('addressList', {houses: houses});
+                $('#cityselect').html('');
                 $('#places').html(addressList);    
 
                 selectPanel.expand();            
             }
+        });
+    });
+
+    $('#show_cityselect').on('click', function(e) {
+        e.preventDefault();
+
+        getProjects(function(err, projects) {
+            for (var i = 0; i < projects.length; i++) {
+                var project = projects[i];
+                projectsById[project.id] = project;
+            }
+
+            var projectList = renderTemplate('projectList', { projects: projects });
+            $('#places').html('');  
+            $('#cityselect').html(projectList);    
+
+            selectPanel.expand(); 
         });
     });
 
@@ -128,7 +145,23 @@ $(function() {
         calculateRating(house);  
     });
 
-    // 
+    $('body').on('click', '.city_link', function(e) {
+        e.preventDefault();
+
+        var projectId = $(this).data('id'); 
+
+        project = projectsById[projectId];
+        $('#show_cityselect').text(project.name);
+
+        var point = parsePoint(project.centroid);
+
+        console.log(project);
+
+        map.setView([point.lat, point.lng], project.zoomlevel);
+        selectPanel.collapse(); 
+    });
+
+    // .select-panel__list_cityselect .list__item
 
     var mapOptions = {
         zoomControl: false
@@ -229,6 +262,14 @@ $(function() {
         });
     }
 
+    function parsePoint(pointString) {
+        var pointParsed = /POINT\((.*)\s(.*)\)/i.exec(pointString);
+        return {
+            lng: pointParsed[1], 
+            lat: pointParsed[2]
+        };
+    }
+
     function calculateRating(house) {
         console.log('Calculating rating', house.centroid);
 
@@ -271,6 +312,7 @@ $(function() {
             });
         });
 
+
         $("#preloader").show();
 
         async.series(searches, function() {
@@ -302,6 +344,25 @@ $(function() {
             selectPanel.collapse();
             sideBar.collapse();
             resultPanel.expand();
+        });
+    }
+
+
+    function getProjects(callback) {
+        $.ajax({
+            url: 'http://catalog.api.2gis.ru/project/list',
+            dataType: 'jsonp',
+            data: {
+                key: api_key,
+                version: '1.3',
+                output: 'jsonp'
+            }
+        }).done(function(response) {
+            if (response.response_code != 200) {
+                callback(true);
+            } else {
+                callback(null, response.result);
+            }
         });
     }
     
