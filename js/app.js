@@ -323,11 +323,12 @@ $(function() {
             if(firms[pinIndex].firms) {
                 $.each(firms[pinIndex].firms, function (firmsIndex, firmsValue) {
 
+                    var img_ident = /icon_(.*)/.exec(pinRubrics[pinIndex].idetify);
                     var icon = L.divIcon({
-                        iconSize: [47, 47],
+                        iconSize: [32, 37],
                         iconAnchor: [12, 40],
                         className: 'map__marker',
-                        html: '<div class="icon ' + pinRubrics[pinIndex].idetify + '"></div>'
+                        html: '<div class="map_icon" style="background: url(/i/markers/'+ img_ident[1] +'.png);"></div>'
                     }),
                     markerPosition = [firmsValue.lat, firmsValue.lon],
                     markerOptions = {

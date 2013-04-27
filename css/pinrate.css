@@ -861,3 +861,11 @@ body {
     background: none;
     border: none;
 }
+
+.map_icon {
+    width: 32px;
+    height: 37px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: top;
+}
