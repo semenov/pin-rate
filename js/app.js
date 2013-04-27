@@ -156,6 +156,7 @@ $(function() {
                 var house = housesById[geoId];
 
                 calculateRating(house);  
+                map.closePopup();
             }); 
         });
     });
