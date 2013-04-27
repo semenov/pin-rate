@@ -204,6 +204,8 @@ $(function() {
         async.series(searches, function() {
             var rating = 0;
             $.each(pinRubrics, function(index, value) {
+                $( pinRubrics[index].idetify ).html(results[index].total);
+
                 if(results[index].total > 0  && pinRubrics[index].inRating )
                     rating += 3.08;
             });

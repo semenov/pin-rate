@@ -7,7 +7,8 @@ var pinRubrics = [
         radius: 300,
         plus: 1,
         minus: 0.9,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_housing-department ~ span span'
     },
     {
         name: 'Почта',
@@ -17,7 +18,8 @@ var pinRubrics = [
         radius: 1000,
         plus: 1,
         minus: 0.9,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_housing-department ~ span span'
     },
     {
         name: 'Банки',
@@ -27,7 +29,8 @@ var pinRubrics = [
         radius: 700,
         plus: 1,
         minus: 1,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_post-office ~ span span'
     },
     {
         name: 'Банкоматы',
@@ -37,7 +40,8 @@ var pinRubrics = [
         radius: 500,
         plus: 1,
         minus: 1,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_ATM ~ span span'
     },
     {
         name: 'Парикмахерские',
@@ -47,7 +51,8 @@ var pinRubrics = [
         radius: 700,
         plus: 1,
         minus: 1,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_barber ~ span span'
     },
     {
         name: 'Стоянки',
@@ -57,7 +62,8 @@ var pinRubrics = [
         radius: 700,
         plus: 1.1,
         minus: 1,
-        inRating: false
+        inRating: false,
+        idetify: '.icon.icon_parking ~ span span'
     },
     {
         name: 'Аптеки',
@@ -67,7 +73,8 @@ var pinRubrics = [
         radius: 350,
         plus: 1,
         minus: 0.9,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_pharmacy ~ span span'
     },
     {
         name: 'Больницы',
@@ -81,7 +88,8 @@ var pinRubrics = [
         radius: 700,
         plus: 1,
         minus: 0.9,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_health ~ span span'
     },
     {
         name: 'Бары',
@@ -91,7 +99,8 @@ var pinRubrics = [
         radius: 800,
         plus: 1.1,
         minus: 1,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_taproom ~ span span'
     },
     {
         name: 'Кафе',
@@ -101,7 +110,8 @@ var pinRubrics = [
         radius: 800,
         plus: 1.1,
         minus: 1,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_diningroom ~ span span'
     },
     {
         name: 'Кондитерские',
@@ -111,7 +121,8 @@ var pinRubrics = [
         radius: 800,
         plus: 1.1,
         minus: 1,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_confectionery ~ span span'
     },
     {
         name: 'Кофейни',
@@ -121,7 +132,8 @@ var pinRubrics = [
         radius: 800,
         plus: 1.1,
         minus: 1,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_coffeehouse ~ span span'
     },
     {
         name: 'Бассейны',
@@ -131,7 +143,8 @@ var pinRubrics = [
         radius: 800,
         plus: 1,
         minus: 1,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_swimming-pool ~ span span'
     },
     {
         name: 'Спортшколы',
@@ -141,7 +154,8 @@ var pinRubrics = [
         radius: 800,
         plus: 1,
         minus: 1,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_sports-school ~ span span'
     },
     {
         name: 'Фитнес',
@@ -151,7 +165,8 @@ var pinRubrics = [
         radius: 800,
         plus: 1,
         minus: 1,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_fitness-center ~ span span'
     },
     {
         name: 'Стадионы',
@@ -161,7 +176,8 @@ var pinRubrics = [
         radius: 800,
         plus: 1,
         minus: 1,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_stadium ~ span span'
     },
     {
         name: 'Образование',
@@ -171,7 +187,8 @@ var pinRubrics = [
         radius: 700,
         plus: 1,
         minus: 0.9,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_education ~ span span'
     },
     {
         name: 'Детские сады',
@@ -181,7 +198,8 @@ var pinRubrics = [
         radius: 400,
         plus: 1,
         minus: 0.9,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_kindergarten ~ span span'
     },
     {
         name: 'Боулинг',
@@ -191,7 +209,8 @@ var pinRubrics = [
         radius: 900,
         plus: 1.1,
         minus: 1,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_bowling ~ span span'
     },
     {
         name: 'Кино',
@@ -201,7 +220,8 @@ var pinRubrics = [
         radius: 900,
         plus: 1.1,
         minus: 1,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_cinema ~ span span'
     },
     {
         name: 'Парки',
@@ -211,7 +231,8 @@ var pinRubrics = [
         radius: 2000,
         plus: 1.1,
         minus: 1,
-        inRating: false
+        inRating: false,
+        idetify: '.icon.icon_park ~ span span'
     },
     {
         name: 'Театры',
@@ -221,7 +242,8 @@ var pinRubrics = [
         radius: 2000,
         plus: 1.1,
         minus: 1,
-        inRating: false
+        inRating: false,
+        idetify: '.icon.icon_theater ~ span span'
     },
     {
         name: 'Гипермаркеты',
@@ -231,17 +253,19 @@ var pinRubrics = [
         radius: 2000,
         plus: 1,
         minus: 1,
-        inRating: false
+        inRating: false,
+        idetify: '.icon.icon_hypermarket ~ span span'
     },
     {
         name: 'Продукты',
         rubrics: [
-            'Продовольственные магазины'                        
+            'Продовольственные магазины'
         ],
         radius: 400,
         plus: 1,
         minus: 1,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_grocery ~ span span'
     },
     {
         name: 'Супермаркеты',
@@ -251,7 +275,8 @@ var pinRubrics = [
         radius: 1000,
         plus: 1,
         minus: 1,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_supermarket ~ span span'
     },
     {
         name: 'Торговые центры',
@@ -261,7 +286,8 @@ var pinRubrics = [
         radius: 1000,
         plus: 1,
         minus: 1,
-        inRating: true
+        inRating: true,
+        idetify: '.icon.icon_shopping-center ~ span span'
     }
 
 ];
