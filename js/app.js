@@ -314,6 +314,7 @@ $(function() {
 
 
         $("#preloader").show();
+        $("#application").addClass('app_blured');
 
         async.series(searches, function() {
             var rating = 0;
@@ -340,6 +341,7 @@ $(function() {
             placeMarkers(results);
 
             $("#preloader").hide();
+            $("#application").removeClass('app_blured');
 
             selectPanel.collapse();
             sideBar.collapse();
