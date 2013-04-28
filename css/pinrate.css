@@ -380,7 +380,12 @@ body {
     /* .map_position_c .DGControlsCopyright {
         right: 777px !important;
     } */
-
+.map_position_d {
+    left: 700px;
+}
+.map_position_d {
+    right: 350px;
+}
 
 /* result */
 
