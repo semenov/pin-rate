@@ -701,6 +701,9 @@ body {
 
 
 /* social */
+.social_result {
+    border-bottom: 1px solid #636363;
+}
 .ico_twitter-share {
     background-position: 0px -261px;
     height: 48px;
@@ -744,7 +747,13 @@ body {
 .social__item .link_vk:hover {
     border-color: #486b92;
 }
-
+.result .social{
+    font-size: 0;
+    margin-bottom: 35px;
+    padding: 0 0 24px;
+    text-align: center;
+    width: 100%;
+}
 
 /* baron */
 .baron-wrapper {
@@ -780,7 +789,7 @@ body {
     text-align: center;
 }
     .rate__in {
-        display: inline-block;
+        display: block;
         font-family: pt_sansbold;
         font-size: 60px;
         margin: 0 0 12px;
