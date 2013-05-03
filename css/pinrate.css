@@ -802,6 +802,13 @@ body {
         color: #636363;
         display: block;
         margin-bottom: 12px;
+        margin-top: -4px;
+    }
+    .rate_white{
+        color: #636363;
+    }
+    .rate_white .rate__address{
+        color: #b7b7b7;
     }
 
 
@@ -1099,7 +1106,8 @@ body {
     -webkit-transition: all 0.2s linear;
     -webkit-transform: rotateX(100deg) scale(0.6);
     opacity: 0;
-    padding: 50px;
+    padding: 50px 50px 40px 50px;
+    min-width: 372px;
 }
 .popup__content_open{
     -webkit-transform: rotateX(0deg) scale(1);
@@ -1111,6 +1119,7 @@ body {
 .popup__about{
     width: 612px;
     color: #636363;
+    padding-bottom: 10px;
 }
     .popup__about h2{
         font-size: 30px;

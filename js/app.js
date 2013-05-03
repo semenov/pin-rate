@@ -389,12 +389,12 @@ $(function() {
             });
 
             rating = rating > 100 ? 100 : Math.round(rating);
-            $('#rating_result').html( rating + '%' );
+            $('[data-role=rating_result]').html( rating + '%' );
 
             placeMarkers(results, house);
-            $('#rate_address').html(house.name);
+            $('[data-role=rate_address]').html(house.name);
             if(special_labels[house.name]) {
-                $('#rate_description').html(special_labels[house.name]);
+                $('[data-role=rate_description]').html(special_labels[house.name]);
             } else {
                 $.each(rating_labels, function(index, value) {
                     if(rating >= value.from && rating <= value.to) {
