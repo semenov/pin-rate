@@ -289,6 +289,21 @@ body {
     height: 32px;
     width: 32px;
 }
+.icon_close-popup{
+    background-position: -148px -261px;
+    width: 13px;
+    height: 13px;
+    padding: 10px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: none;
+    text-indent: 1000px;
+    overflow: hidden;
+}
+.icon_close-popup:hover{
+    background-position: -181px -261px;
+}
 .sidebar_visible .icon_toggle,
 .result .icon_toggle {
     background-position: -9px -100px;
@@ -686,6 +701,9 @@ body {
 
 
 /* social */
+.social_result {
+    border-bottom: 1px solid #636363;
+}
 .ico_twitter-share {
     background-position: 0px -261px;
     height: 48px;
@@ -729,7 +747,13 @@ body {
 .social__item .link_vk:hover {
     border-color: #486b92;
 }
-
+.result .social{
+    font-size: 0;
+    margin-bottom: 35px;
+    padding: 0 0 24px;
+    text-align: center;
+    width: 100%;
+}
 
 /* baron */
 .baron-wrapper {
@@ -765,7 +789,7 @@ body {
     text-align: center;
 }
     .rate__in {
-        display: inline-block;
+        display: block;
         font-family: pt_sansbold;
         font-size: 60px;
         margin: 0 0 12px;
@@ -1047,6 +1071,9 @@ body {
     perspective: 2000px;
     -webkit-perspective: 2000px;
     display: none;
+    font-size: 14px;
+    line-height: 20px;
+    color: #636363;
 }
 .popup:before{
     content: "";
@@ -1071,6 +1098,29 @@ body {
 .popup__content_close{
     -webkit-animation: close 10s 1;
 }
+.popup__about{
+    width: 612px;
+    color: #636363;
+}
+    .popup__about h2{
+        font-size: 30px;
+        line-height: 30px;
+        margin-bottom: 16px;
+    }
+    .popup__about-text{
+        margin-bottom: 40px;
+    }
+    .popup__about a{
+        white-space: nowrap;
+        border-bottom: 1px solid #f8b5a7;
+        text-decoration: none;
+        line-height: 1em;
+        display: inline-block;
+        color: #636363;
+    }
+    .popup__about a:hover{
+        color: #f26c4f;
+    }
 @-webkit-keyframes close {
     0% {
         opacity: 1;
@@ -1091,19 +1141,22 @@ body {
 }
 /* authors */
 .authors__list{
-    overflow: hidden;
+    display: inline-block;
+    width: 100%;
 }
-.authors__list dt,
-.authors__list dd{
-    box-sizing: border-box;
-}
-.authors__list dt{
-    float: left;
-    width: 50%;
-    padding-right: 15px;
-}
-.authors__list dd{
-    float: right;
-    width: 50%;
-    padding-left: 15px;
-}
+    .authors__list dt,
+    .authors__list dd{
+        box-sizing: border-box;
+    }
+    .authors__list dt{
+        float: left;
+        width: 50%;
+        padding-right: 15px;
+        text-align: right;
+    }
+    .authors__list dd{
+        float: right;
+        width: 50%;
+        padding-left: 15px;
+        text-align: left;
+    }

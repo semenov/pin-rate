@@ -52,7 +52,7 @@ $(function() {
     });
 
     $('[data-role=close-popup]').click(function(){
-        lightbox.close();
+        lightbox.hide();
         return false;
     });
 
@@ -320,7 +320,7 @@ $(function() {
     }
 
     function calculateRating(house) {
-        console.log('Calculating rating', house.centroid);
+        console.log('Calculating rating', house);
 
         var point_parsed = parsePoint(house.centroid),
             point = point_parsed.lat + ',' + point_parsed.lon;
@@ -385,10 +385,23 @@ $(function() {
                     rating *= pinRubrics[index].plus;
             });
 
-            rating = rating > 100 ? 100 : rating;
-            $('#rating_result').html( Math.round(rating) + '%' );
+            rating = rating > 100 ? 100 : Math.round(rating);
+            $('#rating_result').html( rating + '%' );
 
             placeMarkers(results, house);
+            $('#rate_address').html(house.name);
+            if(special_labels[house.name]) {
+                $('#rate_description').html(special_labels[house.name]);
+            } else {
+                $.each(rating_labels, function(index, value) {
+                    if(rating >= value.from && rating <= value.to) {
+                        var labels = value.labels,
+                            random = Math.floor(Math.random() * labels.length - 1) + 1;
+                        $('#rate_description').html(labels[random]);
+                        return false;
+                    }
+                });
+            }
 
             $("#preloader").hide();
             $("#application").removeClass('app_blured');
