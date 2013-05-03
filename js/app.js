@@ -521,13 +521,13 @@ $(function() {
 
         firmMarkers = new L.MarkerClusterGroup({
             showCoverageOnHover: false,
-            maxClusterRadius: 50,
+            maxClusterRadius: 100,
             iconCreateFunction: function(cluster) {
                 return new L.DivIcon({html: '<div class="map__cluster">' + cluster.getChildCount() + '</div>'});
             }
         });
 
-        map.addLayer(firmMarkers);
+        
 
         //var markers = {};
         var markers = [];
@@ -564,6 +564,8 @@ $(function() {
         $.each(markers, function (index, marker) {
             firmMarkers.addLayer(marker);
         });
+
+        map.addLayer(firmMarkers);
 
         houseMarker.addTo(map);
     }
