@@ -101,14 +101,14 @@ $(function() {
     };
 
     var social = {
-        makeMessage: function(rating) {
-            return 'Рейтинг дома ' + rating + '%. Узнай свой рейтинг с помощью Pinrate'
+        makeMessage: function(rating, text) {
+            return 'Теперь знаю рейтинг моего дома. Он ' + rating + '% и мне говорят: «' + text + '». А у вас как?';
         },
 
         url: 'http://pinrate.ru/',
 
-        twiUrl: function(rating) {
-            var msg = social.makeMessage(rating);
+        twiUrl: function(rating, text) {
+            var msg = social.makeMessage(rating, text);
             return 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(social.url) + '&text=' + encodeURIComponent(msg);
         },
 
@@ -116,8 +116,8 @@ $(function() {
             return 'http://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(social.url)
         },
 
-        vkUrl: function(rating) {
-            var msg = social.makeMessage(rating);
+        vkUrl: function(rating, text) {
+            var msg = social.makeMessage(rating, text);
             return 'http://vk.com/share.php?url=' + encodeURIComponent(social.url) + '&title=' + encodeURIComponent(msg);
         },
 
@@ -161,6 +161,7 @@ $(function() {
 
             if (houses.length == 1) {
                 var house = houses[0];
+                house.name = stripCityFromAddress(house.name);
                 calculateRating(house); 
 
             } else {
@@ -428,16 +429,20 @@ $(function() {
             rating = rating > 100 ? 100 : Math.round(rating);
             $('[data-role=rating_result]').html( rating + '%' );
 
+            var description = '';
+
             placeMarkers(results, house);
             $('[data-role=rate_address]').html(house.name);
-            if(special_labels[house.name]) {
-                $('[data-role=rate_description]').html(special_labels[house.name]);
+            if(special_labels[house.name] != undefined && projectId == 1) { //special labels for nsk
+                description = special_labels[house.name];
+                $('[data-role=rate_description]').html(description);
             } else {
                 $.each(rating_labels, function(index, value) {
                     if(rating >= value.from && rating <= value.to) {
                         var labels = value.labels,
                             random = Math.floor(Math.random() * labels.length - 1) + 1;
-                        $('#rate_description').html(labels[random]);
+                        description = labels[random];
+                        $('[data-role=rate_description]').html(description);
                         return false;
                     }
                 });
@@ -450,7 +455,7 @@ $(function() {
             sideBar.collapse();
             resultPanel.expand();
 
-            activateSocialButtons(Math.round(rating));
+            activateSocialButtons(Math.round(rating), description);
 
             setTimeout(function() {
                 console.log('socialShown', $.cookie('socialShown'));
@@ -463,10 +468,10 @@ $(function() {
         });
     }
 
-    function activateSocialButtons(rating) {
-        $(".social__twi").attr('href', social.twiUrl(rating));
-        $(".social__vk").attr('href', social.vkUrl(rating));
-        $(".social__fb").attr('href', social.fbUrl(rating));
+    function activateSocialButtons(rating, text) {
+        $(".social__twi").attr('href', social.twiUrl(rating, text));
+        $(".social__vk").attr('href', social.vkUrl(rating, text));
+        $(".social__fb").attr('href', social.fbUrl(rating, text));
     }
 
     function getProjects(callback) {
@@ -546,7 +551,8 @@ $(function() {
                     markerPosition = [firmsValue.lat, firmsValue.lon],
                     markerOptions = {
                         icon: icon,
-                        draggable: false
+                        draggable: false,
+                        title: firmsValue.name
                     };
 
                     var marker = L.marker(markerPosition, markerOptions);
