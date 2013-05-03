@@ -379,9 +379,7 @@ $(function() {
 
                     console.log(data);
                     if(data.response_code == '200')
-                        metro_coefficient = 10;
-                    else
-                        metro_coefficient = -10;
+                        metro_coefficient = 10;                    
 
                     callback();
                 });
