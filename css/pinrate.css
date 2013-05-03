@@ -862,6 +862,11 @@ body {
     font-size: 21px;
     transition: all 0.1s linear;
 }
+.icon_pinrate_map {
+    width: 36px;
+    height: 45px;
+    background: url(../i/markers/pin.png) no-repeat;
+}
 
 .leaflet-div-icon {
     background: none;
