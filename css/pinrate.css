@@ -399,7 +399,7 @@ body {
     left: 700px;
 }
 .map_position_d {
-    right: 350px;
+    right: 440px;
 }
 
 /* result */
@@ -468,7 +468,7 @@ body {
 }
     .select-panel__in {
         border-left: 1px solid #494949;
-        height: 100%
+        height: 100%;
         left: 0;
         overflow: hidden;
         position: relative;
@@ -642,10 +642,10 @@ body {
     height: 100%;
     margin-bottom: 10px;
     position: absolute;
-    right: -360px;
+    right: -440px;
     /*right: 0;*/
     top: 0;
-    width: 360px;
+    width: 440px;
     z-index: 5;
 }
 .result_visible {
@@ -817,13 +817,13 @@ body {
     height: 400px;
     overflow: hidden;
     position: relative;
-    width: 320px;
+    width: 360px;
 }
     .results-wrapper .baron-wrapper {
         height: 100%;
         overflow: hidden;
         position: relative;
-        width: 310px;
+        width: 360px;
     }
     .results-wrapper .baron__scroller {
         height: 100%
@@ -842,7 +842,7 @@ body {
     color: #fff;
     font-size: 0;
     margin: 0 0 36px;
-    width: 320px;
+    width: 360px;
 }
     .results__item {
         display: inline-block;
@@ -851,7 +851,7 @@ body {
         line-height: 28px;
         margin: 0 0 8px;
         padding-right: 10px;
-        width: 150px;
+        width: 170px;
     }
         .results__item .icon {
             margin-right: 11px;
@@ -929,8 +929,8 @@ body {
     background: #e95130;
     transition: all 0.1s linear;
     color: #fff;
-    margin-top: -20px;
-    margin-left: -20px;
+    margin-top: -15px;
+    margin-left: -15px;
 }
 .icon_pinrate_map {
     width: 36px;
