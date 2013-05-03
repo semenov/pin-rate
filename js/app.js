@@ -161,6 +161,7 @@ $(function() {
 
             if (houses.length == 1) {
                 var house = houses[0];
+                house.name = stripCityFromAddress(house.name);
                 calculateRating(house); 
 
             } else {
@@ -430,14 +431,14 @@ $(function() {
 
             placeMarkers(results, house);
             $('[data-role=rate_address]').html(house.name);
-            if(special_labels[house.name]) {
+            if(special_labels[house.name] != undefined && projectId == 1) { //special labels for nsk
                 $('[data-role=rate_description]').html(special_labels[house.name]);
             } else {
                 $.each(rating_labels, function(index, value) {
                     if(rating >= value.from && rating <= value.to) {
                         var labels = value.labels,
                             random = Math.floor(Math.random() * labels.length - 1) + 1;
-                        $('#rate_description').html(labels[random]);
+                        $('[data-role=rate_description]').html(labels[random]);
                         return false;
                     }
                 });
