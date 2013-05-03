@@ -51,7 +51,7 @@ $(function() {
     });
 
     $('[data-role=close-popup]').click(function(){
-        popup.close();
+        popup.hide();
         return false;
     });
 
