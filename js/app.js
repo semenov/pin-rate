@@ -368,9 +368,21 @@ $(function() {
             }
         });
     }
+
+    var firmMarkers;
+    var houseMarker;
+
     
     function placeMarkers(firms, house) {
 
+        // Удаление старых маркеров
+        if (firmMarkers) {
+            map.removeLayer(firmMarkers);
+        }
+
+        if (houseMarker) {
+            map.removeLayer(houseMarker);
+        }
 
         var houseIcon = L.divIcon({
                 iconSize: [45, 36],
@@ -383,12 +395,13 @@ $(function() {
             houseMarkerOptions = {
                 icon: houseIcon,
                 draggable: false
-            },
-            houseMarker = L.marker(houseMarkerPosition, houseMarkerOptions);
+            };
+
+        houseMarker = L.marker(houseMarkerPosition, houseMarkerOptions);
 
         map.panTo(houseMarkerPosition);
 
-        var firmMarkers = new L.MarkerClusterGroup({
+        firmMarkers = new L.MarkerClusterGroup({
             showCoverageOnHover: false,
             maxClusterRadius: 50,
             iconCreateFunction: function(cluster) {
