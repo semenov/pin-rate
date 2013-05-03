@@ -546,7 +546,8 @@ $(function() {
                     markerPosition = [firmsValue.lat, firmsValue.lon],
                     markerOptions = {
                         icon: icon,
-                        draggable: false
+                        draggable: false,
+                        title: firmsValue.name
                     };
 
                     var marker = L.marker(markerPosition, markerOptions);
