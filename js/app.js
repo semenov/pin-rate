@@ -150,7 +150,7 @@ $(function() {
                 projectsById[project.id] = project;
             }
 
-            var projectList = renderTemplate('projectList', { projects: projects });
+            var projectList = renderTemplate('projectList', {projects: projects});
             $('#places').html('');  
             $('#cityselect').html(projectList);    
 
@@ -288,16 +288,16 @@ $(function() {
     function parsePoint(pointString) {
         var pointParsed = /POINT\((.*)\s(.*)\)/i.exec(pointString);
         return {
-            lng: pointParsed[1], 
-            lat: pointParsed[2]
+            lon: pointParsed[2], 
+            lat: pointParsed[1]
         };
     }
 
     function calculateRating(house) {
         console.log('Calculating rating', house.centroid);
 
-        var point_parsed = /POINT\((.*)\s(.*)\)/i.exec(house.centroid),
-            point = point_parsed[1] + ',' + point_parsed[2];
+        var point_parsed = parsePoint(house.centroid),
+            point = point_parsed.lat + ',' + point_parsed.lon;
 
         var searches = [];
         var results = [];
@@ -339,7 +339,8 @@ $(function() {
         $("#preloader").show();
         $("#application").addClass('app_blured');
 
-        async.series(searches, function() {
+        //async.series(searches, function() {
+        async.parallel(searches, function() {
             var rating = 0;
             $.each(pinRubrics, function(index, value) {                
                 $( '.icon.' + pinRubrics[index].idetify + ' ~ span span' ).html( results[index].total );
@@ -361,7 +362,7 @@ $(function() {
             rating = rating > 100 ? 100 : rating;
             $('#rating_result').html( Math.round(rating) + '%' );
 
-            placeMarkers(results);
+            placeMarkers(results, house);
 
             $("#preloader").hide();
             $("#application").removeClass('app_blured');
@@ -390,12 +391,40 @@ $(function() {
             }
         });
     }
+
+    var firmMarkers;
+    var houseMarker;
+
     
-    function placeMarkers(firms) {
-        
-        var markers = {};
-        
-        var firmMarkers = new L.MarkerClusterGroup({
+    function placeMarkers(firms, house) {
+
+        // Удаление старых маркеров
+        if (firmMarkers) {
+            map.removeLayer(firmMarkers);
+        }
+
+        if (houseMarker) {
+            map.removeLayer(houseMarker);
+        }
+
+        var houseIcon = L.divIcon({
+                iconSize: [45, 36],
+                iconAnchor: [12, 40],
+                className: 'map__marker',
+                html: '<div class="icon_pinrate_map"></div>'
+            }),
+            housePosition = parsePoint(house.centroid),
+            houseMarkerPosition = [housePosition.lon, housePosition.lat],
+            houseMarkerOptions = {
+                icon: houseIcon,
+                draggable: false
+            };
+
+        houseMarker = L.marker(houseMarkerPosition, houseMarkerOptions);
+
+        map.panTo(houseMarkerPosition);
+
+        firmMarkers = new L.MarkerClusterGroup({
             showCoverageOnHover: false,
             maxClusterRadius: 50,
             iconCreateFunction: function(cluster) {
@@ -404,7 +433,10 @@ $(function() {
         });
 
         map.addLayer(firmMarkers);
-        
+
+        //var markers = {};
+        var markers = [];
+
         $.each(pinRubrics, function (pinIndex, pinValue) {
             if(firms[pinIndex].firms) {
                 $.each(firms[pinIndex].firms, function (firmsIndex, firmsValue) {
@@ -424,11 +456,12 @@ $(function() {
 
                     var marker = L.marker(markerPosition, markerOptions);
                     
-                    if( markers[firmsValue.lat + ' ' + firmsValue.lon] && Math.random() > 0.5 ) {
+                    /*if( markers[firmsValue.lat + ' ' + firmsValue.lon] && Math.random() > 0.5 ) {
                         markers[firmsValue.lat + ' ' + firmsValue.lon] = marker;
                     } else {
                         markers[firmsValue.lat + ' ' + firmsValue.lon] = marker;
-                    }
+                    }*/
+                    markers.push(marker);
                 });
             }
         });
@@ -436,6 +469,7 @@ $(function() {
         $.each(markers, function (index, marker) {
             firmMarkers.addLayer(marker);
         });
-        
+
+        houseMarker.addTo(map);
     }
 });
