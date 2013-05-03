@@ -12,6 +12,7 @@ $(function() {
         expanded: false,
 
         expand: function() {
+            resultPanel.collapse();
             $('#sidebar').addClass('sidebar_visible');
             $('#map').removeClass('map_position_b');
             $('#map').addClass('map_position_c');
@@ -73,6 +74,7 @@ $(function() {
         expanded: false,
 
         expand: function() {
+            sideBar.collapse();
             $('#result').addClass('result_visible');
             $('#map').removeClass('map_position_b');
             $('#map').addClass('map_position_d');
@@ -80,11 +82,13 @@ $(function() {
         },
 
         collapse: function() {
-            $('#result').removeClass('result_visible');
-            $('#map').removeClass('map_position_d');
-            $('#map').addClass('map_position_b');
-            $('.result__toggle').show();
-            resultPanel.expanded = false;
+            if (resultPanel.expanded) {
+                $('#result').removeClass('result_visible');
+                $('#map').removeClass('map_position_d');
+                $('#map').addClass('map_position_b');
+                $('.result__toggle').show();
+                resultPanel.expanded = false;
+            }
         },
 
         toggle: function() {
