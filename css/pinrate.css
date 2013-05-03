@@ -920,17 +920,17 @@ body {
 }
 
 .map__cluster {
-    width: 48px;
-    height: 48px;
-    border-radius: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
     text-align: center;
-    line-height: 48px;
+    line-height: 40px;
     font-size: 14px;
     background: #e95130;
     transition: all 0.1s linear;
     color: #fff;
-    margin-top: -19px;
-    margin-left: -19px;
+    margin-top: -20px;
+    margin-left: -20px;
 }
 .icon_pinrate_map {
     width: 36px;
