@@ -1,6 +1,7 @@
 $(function() {
 
     var map;
+    var projectId = 1;
     var housesById = {};
     var popup;
     var projectsById = {};
@@ -32,7 +33,7 @@ $(function() {
         }
     };
 
-    var popup = {
+    var lightbox = {
         show: function(id){
             $('.popup').fadeIn(200);
             $('.popup__content').not(id).hide();
@@ -46,12 +47,12 @@ $(function() {
 
     $('[data-role=show-popup]').click(function(){
         var curPopup = $(this).attr('data-popup');
-        popup.show('[data-role='+ curPopup +']');
+        lightbox.show('[data-role='+ curPopup +']');
         return false;
     });
 
     $('[data-role=close-popup]').click(function(){
-        popup.close();
+        lightbox.close();
         return false;
     });
 
@@ -195,7 +196,7 @@ $(function() {
     $('body').on('click', '.city_link', function(e) {
         e.preventDefault();
 
-        var projectId = $(this).data('id'); 
+        projectId = $(this).data('id'); 
 
         project = projectsById[projectId];
         $('#show_cityselect').text(project.name);
@@ -203,8 +204,9 @@ $(function() {
         var point = parsePoint(project.centroid);
 
         console.log(project);
+        console.log(point);
 
-        map.setView([point.lat, point.lng], project.zoomlevel);
+        map.setView([point.lon, point.lat], project.zoomlevel);
         selectPanel.collapse(); 
     });
 
@@ -282,7 +284,7 @@ $(function() {
                 key: api_key,
                 version: '1.3',
                 q: query,
-                project: 1,
+                project: projectId,
                 types: 'house',
                 limit: 20,
                 output: 'jsonp'
@@ -396,6 +398,10 @@ $(function() {
             resultPanel.expand();
 
             activateSocialButtons(Math.round(rating));
+
+            setTimeout(function() {
+                //lightbox.show('[data-role=social-popup]');
+            }, 2000)
         });
     }
 
