@@ -701,7 +701,7 @@ body {
 
 
 /* social */
-.social_result {
+.result__in .social_result {
     border-bottom: 1px solid #636363;
 }
 .ico_twitter-share {
@@ -796,6 +796,12 @@ body {
     }
     .rate__description {
         display: block;
+    }
+    .rate__address{
+        font-size: 18px;
+        color: #636363;
+        display: block;
+        margin-bottom: 12px;
     }
 
 
