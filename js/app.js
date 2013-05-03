@@ -318,7 +318,7 @@ $(function() {
     }
 
     function calculateRating(house) {
-        console.log('Calculating rating', house.centroid);
+        console.log('Calculating rating', house);
 
         var point_parsed = parsePoint(house.centroid),
             point = point_parsed.lat + ',' + point_parsed.lon;
@@ -387,6 +387,7 @@ $(function() {
             $('#rating_result').html( Math.round(rating) + '%' );
 
             placeMarkers(results, house);
+            $('#rate_address').html(house.name);
 
             $("#preloader").hide();
             $("#application").removeClass('app_blured');
