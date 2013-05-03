@@ -416,7 +416,12 @@ $(function() {
             activateSocialButtons(Math.round(rating));
 
             setTimeout(function() {
-                //lightbox.show('[data-role=social-popup]');
+                console.log('socialShown', $.cookie('socialShown'));
+                if ($.cookie('socialShown') === undefined) {
+                    $.cookie('socialShown', true, { expires: 365, path: '/' });
+                    lightbox.show('[data-role=social-popup]');
+                }
+                
             }, 2000)
         });
     }
