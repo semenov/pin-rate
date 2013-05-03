@@ -2,6 +2,7 @@ $(function() {
 
     var map;
     var projectId = 1;
+    var projectName = 'Новосибирск';
     var housesById = {};
     var popup;
     var projectsById = {};
@@ -198,7 +199,9 @@ $(function() {
 
         projectId = $(this).data('id'); 
 
+
         project = projectsById[projectId];
+        projectName = project.name;
         $('#show_cityselect').text(project.name);
 
         var point = parsePoint(project.centroid);
@@ -260,7 +263,7 @@ $(function() {
     });
 
     function stripCityFromAddress(address) {
-        var prefix = 'Новосибирск, ';
+        var prefix = projectName + ', ';
         var hasPrefix = (address.slice(0, prefix.length) == prefix);
 
         if (hasPrefix) {
