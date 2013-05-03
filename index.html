@@ -10,7 +10,7 @@
     <!-- styles -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
     <!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.ie.css" /><![endif]-->
-    <link rel="stylesheet" href="css/MarkerCluster.css" />
+
     <link rel="stylesheet" href="css/pinrate.css" media="all" />
     <link rel="stylesheet" href="css/baron.css" media="all" />
 
@@ -71,7 +71,7 @@
                             <input type="text" name="address_address" id="address_address" class="input input_text" placeholder="Улица, дом" autocomplete="off" />
                         </li>
                         <li class="address__item address__item_submit">
-                            <a href="#" id="address_submit" class="address__submit">Узнать рейтинг дома</a>
+                            <a href="#" onclick="$('#address_form').submit();" id="address_submit" class="address__submit">Узнать рейтинг дома</a>
                         </li>
                         <li class="address__nothing-found">Ничего не найдено</li>
                     </ul>
