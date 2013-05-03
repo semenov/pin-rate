@@ -10,7 +10,7 @@
     <!-- styles -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
     <!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.ie.css" /><![endif]-->
-
+    <link rel="stylesheet" href="css/MarkerCluster.css" />
     <link rel="stylesheet" href="css/pinrate.css" media="all" />
     <link rel="stylesheet" href="css/baron.css" media="all" />
 
@@ -111,18 +111,19 @@
                 <span class="result__toggle" id="result_toggle">
                     <icon class="icon icon_toggle"></icon>
                 </span>
+                <div id="results-header" class="result__header">    
+                    <div class="rate">
+                        <h2 data-role="rating_result" class="rate__in">87%</h2>
+                        <span class="rate__address" data-role="rate_address"></span>
+                        <span class="rate__description" data-role="rate_description">Хороший дом!</span>
+                    </div>
 
-                <div class="rate">
-                    <h2 data-role="rating_result" class="rate__in">87%</h2>
-                    <span class="rate__address" data-role="rate_address"></span>
-                    <span class="rate__description" data-role="rate_description">Хороший дом!</span>
+                    <ul class="social social_result">
+                        <li class="social__item"><a href="#" title="Поделиться в Twitter" class="social__link social__twi" target="_blank"><ins class="icon icon_twitter"></ins></a></li>
+                        <li class="social__item"><a href="#" title="Поделиться Вконтакте" class="social__link social__vk" target="_blank"><ins class="icon icon_vk"></ins></a></li>
+                        <li class="social__item"><a href="#" title="Поделиться в Facebook" class="social__link social__fb" target="_blank"><ins class="icon icon_facebook"></ins></a></li>
+                    </ul>
                 </div>
-
-                <ul class="social social_result">
-                    <li class="social__item"><a href="#" title="Поделиться в Twitter" class="social__link social__twi" target="_blank"><ins class="icon icon_twitter"></ins></a></li>
-                    <li class="social__item"><a href="#" title="Поделиться Вконтакте" class="social__link social__vk" target="_blank"><ins class="icon icon_vk"></ins></a></li>
-                    <li class="social__item"><a href="#" title="Поделиться в Facebook" class="social__link social__fb" target="_blank"><ins class="icon icon_facebook"></ins></a></li>
-                </ul>
 
                 <div class="results-wrapper">
                     <div class="baron-wrapper">

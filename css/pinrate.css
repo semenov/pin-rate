@@ -460,6 +460,7 @@ body {
     padding: 70px 0;
     position: absolute;
     top: 0;
+    bottom: 0px;
     -webkit-transition: width 0.5s cubic-bezier(.17, .52, .04, 1);
     width: 0;
 }
@@ -481,7 +482,6 @@ body {
             width: 311px;
         }
             .select-panel__in .baron-wrapper .baron-scroller {
-                height: 100%;
                 overflow-y: scroll;
             }
                 .select-panel__in .wrapper .baron-scroller .baron-container {
@@ -813,11 +813,16 @@ body {
 
 
 /* results */
+.result__header{
+    overflow: hidden;
+}
 .results-wrapper {
-    height: 400px;
     overflow: hidden;
     position: relative;
     width: 360px;
+    position: absolute;
+    bottom: 35px;
+    top: 300px;
 }
     .results-wrapper .baron-wrapper {
         height: 100%;
@@ -843,6 +848,9 @@ body {
     font-size: 0;
     margin: 0 0 36px;
     width: 360px;
+}
+.results:last-child{
+    margin-bottom: 0px;
 }
     .results__item {
         display: inline-block;
@@ -936,6 +944,7 @@ body {
 .icon_pinrate_map {
     width: 36px;
     height: 45px;
+    margin: -3px 0 0 -6px;
     background: url(../i/markers/pin.png) no-repeat;
 }
 

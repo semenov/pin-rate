@@ -62,6 +62,8 @@ $(function() {
         expand: function() {
             $('#sidebar').addClass('sidebar_select-panel_visible');
             $('#map').addClass('map_position_e');
+            // костыль для корректного scroll
+            $(window).resize();
         },
 
         collapse: function() {
@@ -175,7 +177,7 @@ $(function() {
                 $('#cityselect').html('');
                 $('#places').html(addressList);    
 
-                selectPanel.expand();            
+                selectPanel.expand();        
             }
         });
     });
@@ -450,6 +452,8 @@ $(function() {
 
             $("#preloader").hide();
             $("#application").removeClass('app_blured');
+
+            $('.results-wrapper').css('top', $('#results-header').height()+70);
 
             selectPanel.collapse();
             sideBar.collapse();
