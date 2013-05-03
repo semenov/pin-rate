@@ -527,7 +527,7 @@ $(function() {
         firmMarkers = new L.MarkerClusterGroup({
             showCoverageOnHover: false,
             maxClusterRadius: 100,
-            spiderfyDistanceMultiplier: 2,
+            spiderfyDistanceMultiplier: 1.5,
             iconCreateFunction: function(cluster) {
                 return new L.DivIcon({html: '<div class="map__cluster">' + cluster.getChildCount() + '</div>'});
             }
