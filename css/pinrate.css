@@ -701,7 +701,7 @@ body {
 
 
 /* social */
-.social_result {
+.result__in .social_result {
     border-bottom: 1px solid #636363;
 }
 .ico_twitter-share {
@@ -796,6 +796,19 @@ body {
     }
     .rate__description {
         display: block;
+    }
+    .rate__address{
+        font-size: 18px;
+        color: #636363;
+        display: block;
+        margin-bottom: 12px;
+        margin-top: -4px;
+    }
+    .rate_white{
+        color: #636363;
+    }
+    .rate_white .rate__address{
+        color: #b7b7b7;
     }
 
 
@@ -907,17 +920,17 @@ body {
 }
 
 .map__cluster {
-    width: 48px;
-    height: 48px;
-    border-radius: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
     text-align: center;
-    line-height: 48px;
+    line-height: 40px;
     font-size: 14px;
     background: #e95130;
     transition: all 0.1s linear;
     color: #fff;
-    margin-top: -19px;
-    margin-left: -19px;
+    margin-top: -20px;
+    margin-left: -20px;
 }
 .icon_pinrate_map {
     width: 36px;
@@ -1093,7 +1106,8 @@ body {
     -webkit-transition: all 0.2s linear;
     -webkit-transform: rotateX(100deg) scale(0.6);
     opacity: 0;
-    padding: 50px;
+    padding: 50px 50px 40px 50px;
+    min-width: 372px;
 }
 .popup__content_open{
     -webkit-transform: rotateX(0deg) scale(1);
@@ -1105,6 +1119,7 @@ body {
 .popup__about{
     width: 612px;
     color: #636363;
+    padding-bottom: 10px;
 }
     .popup__about h2{
         font-size: 30px;
