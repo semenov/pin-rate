@@ -376,6 +376,29 @@ $(function() {
             });
         });
 
+        var metro_coefficient = 0;
+        if( $.inArray(projectId, metro_projects) ) {
+            var metroSearchFunction = function(callback) {
+                var params = {
+                    q: point,
+                    radius: 250,
+                    key: api_key,
+                    types: 'metro',
+                    output: 'jsonp',
+                    version: '1.3'
+                };
+                $.getJSON('http://catalog.api.2gis.ru/geo/search?callback=?', params, function(data) {
+
+                    console.log(data);
+                    if(data.response_code == '200')
+                        metro_coefficient = 10;                    
+
+                    callback();
+                });
+            }
+            searches.push(metroSearchFunction);
+        }
+
 
         $("#preloader").show();
         $("#application").addClass('app_blured');
@@ -399,6 +422,8 @@ $(function() {
                 if(results[index].total > 1 && pinRubrics[index].inRating )
                     rating *= pinRubrics[index].plus;
             });
+
+            rating += metro_coefficient;
 
             rating = rating > 100 ? 100 : Math.round(rating);
             $('#rating_result').html( rating + '%' );
