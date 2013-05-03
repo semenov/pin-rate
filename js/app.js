@@ -1,6 +1,8 @@
 $(function() {
 
     var map;
+    var projectId = 1;
+    var projectName = 'Новосибирск';
     var housesById = {};
     var popup;
     var projectsById = {};
@@ -32,7 +34,7 @@ $(function() {
         }
     };
 
-    var popup = {
+    var lightbox = {
         show: function(id){
             $('.popup').fadeIn(200);
             $('.popup__content').not(id).hide();
@@ -46,12 +48,12 @@ $(function() {
 
     $('[data-role=show-popup]').click(function(){
         var curPopup = $(this).attr('data-popup');
-        popup.show('[data-role='+ curPopup +']');
+        lightbox.show('[data-role='+ curPopup +']');
         return false;
     });
 
     $('[data-role=close-popup]').click(function(){
-        popup.hide();
+        lightbox.hide();
         return false;
     });
 
@@ -195,16 +197,19 @@ $(function() {
     $('body').on('click', '.city_link', function(e) {
         e.preventDefault();
 
-        var projectId = $(this).data('id'); 
+        projectId = $(this).data('id'); 
+
 
         project = projectsById[projectId];
+        projectName = project.name;
         $('#show_cityselect').text(project.name);
 
         var point = parsePoint(project.centroid);
 
         console.log(project);
+        console.log(point);
 
-        map.setView([point.lat, point.lng], project.zoomlevel);
+        map.setView([point.lon, point.lat], project.zoomlevel);
         selectPanel.collapse(); 
     });
 
@@ -258,7 +263,7 @@ $(function() {
     });
 
     function stripCityFromAddress(address) {
-        var prefix = 'Новосибирск, ';
+        var prefix = projectName + ', ';
         var hasPrefix = (address.slice(0, prefix.length) == prefix);
 
         if (hasPrefix) {
@@ -282,7 +287,7 @@ $(function() {
                 key: api_key,
                 version: '1.3',
                 q: query,
-                project: 1,
+                project: projectId,
                 types: 'house',
                 limit: 20,
                 output: 'jsonp'
@@ -383,11 +388,23 @@ $(function() {
                     rating *= pinRubrics[index].plus;
             });
 
-            rating = rating > 100 ? 100 : rating;
-            $('#rating_result').html( Math.round(rating) + '%' );
+            rating = rating > 100 ? 100 : Math.round(rating);
+            $('#rating_result').html( rating + '%' );
 
             placeMarkers(results, house);
             $('#rate_address').html(house.name);
+            if(special_labels[house.name]) {
+                $('#rate_description').html(special_labels[house.name]);
+            } else {
+                $.each(rating_labels, function(index, value) {
+                    if(rating >= value.from && rating <= value.to) {
+                        var labels = value.labels,
+                            random = Math.floor(Math.random() * labels.length - 1) + 1;
+                        $('#rate_description').html(labels[random]);
+                        return false;
+                    }
+                });
+            }
 
             $("#preloader").hide();
             $("#application").removeClass('app_blured');
@@ -397,6 +414,15 @@ $(function() {
             resultPanel.expand();
 
             activateSocialButtons(Math.round(rating));
+
+            setTimeout(function() {
+                console.log('socialShown', $.cookie('socialShown'));
+                if ($.cookie('socialShown') === undefined) {
+                    $.cookie('socialShown', true, { expires: 365, path: '/' });
+                    lightbox.show('[data-role=social-popup]');
+                }
+                
+            }, 2000)
         });
     }
 

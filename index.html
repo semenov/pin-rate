@@ -19,6 +19,7 @@
     <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
     <script src="js/leaflet.markercluster.js"></script>
     <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
     <script src="js/jquery.placeholder.min.js"></script>
     <script src="js/async.js"></script>
     <script src="js/baron.js"></script>
@@ -114,7 +115,7 @@
                 <div class="rate">
                     <h2 id="rating_result" class="rate__in">87%</h2>
                     <span class="rate__address" id="rate_address"></span>
-                    <span class="rate__description">Хороший дом!</span>
+                    <span class="rate__description" id="rate_description">Хороший дом!</span>
                 </div>
 
                 <ul class="social social_result">
@@ -215,17 +216,17 @@
             <a href="#" data-role="close-popup" class="icon icon icon_close-popup">Закрыть</a>
             <ul class="social_result">
                 <li class="social__item">
-                    <a href="" class="link link_twitter" target="_blank">
+                    <a href="" class="link link_twitter social__twi" target="_blank">
                         <ins class="icon ico_twitter-share"></ins>
                     </a>
                 </li>
                 <li class="social__item">
-                    <a href="" class="link link_facebook" target="_blank">
+                    <a href="" class="link link_facebook social__fb" target="_blank">
                         <ins class="icon ico_facebook-share"></ins>
                     </a>
                 </li>
                 <li class="social__item">
-                    <a href="" class="link link_vk" target="_blank">
+                    <a href="" class="link link_vk social__vk" target="_blank">
                         <ins class="icon ico_vk-share"></ins>
                     </a>
                 </li>
