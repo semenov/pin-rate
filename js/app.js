@@ -64,6 +64,30 @@ $(function() {
         }
     };
 
+    var social = {
+        makeMessage: function(rating) {
+            return 'Рейтинг дома ' + rating + '%. Узнай свой рейтинг с помощью Pinrate'
+        },
+
+        url: 'http://pinrate.ru/',
+
+        twiUrl: function(rating) {
+            var msg = social.makeMessage(rating);
+            return 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(social.url) + '&text=' + encodeURIComponent(msg);
+        },
+
+        fbUrl: function(rating) {
+            return 'http://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(social.url)
+        },
+
+        vkUrl: function(rating) {
+            var msg = social.makeMessage(rating);
+            return 'http://vk.com/share.php?url=' + encodeURIComponent(social.url) + '&title=' + encodeURIComponent(msg);
+        },
+
+
+    };
+
     var notFound = $('.address__nothing-found');
     notFound.hide();
 
@@ -347,9 +371,16 @@ $(function() {
             selectPanel.collapse();
             sideBar.collapse();
             resultPanel.expand();
+
+            activateSocialButtons(Math.round(rating));
         });
     }
 
+    function activateSocialButtons(rating) {
+        $(".social__twi").attr('href', social.twiUrl(rating));
+        $(".social__vk").attr('href', social.vkUrl(rating));
+        $(".social__fb").attr('href', social.fbUrl(rating));
+    }
 
     function getProjects(callback) {
         $.ajax({
