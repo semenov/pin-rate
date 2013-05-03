@@ -254,7 +254,7 @@ $(function() {
             housesById[house.id] = house;
             house.name = stripCityFromAddress(house.name);
 
-            var html = renderTemplate('callout', {house: house})
+            var html = renderTemplate('callout', {house: house});
 
             popup = L.popup()
                 .setLatLng(point)
@@ -552,11 +552,13 @@ $(function() {
                     markerPosition = [firmsValue.lat, firmsValue.lon],
                     markerOptions = {
                         icon: icon,
-                        draggable: false,
-                        title: firmsValue.name
+                        draggable: false
                     };
 
                     var marker = L.marker(markerPosition, markerOptions);
+
+                    var html = renderTemplate('firmCallout', {firm: firmsValue});
+                    marker.bindPopup(html);
                     
                     /*if( markers[firmsValue.lat + ' ' + firmsValue.lon] && Math.random() > 0.5 ) {
                         markers[firmsValue.lat + ' ' + firmsValue.lon] = marker;

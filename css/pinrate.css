@@ -879,6 +879,7 @@ body {
 
 .callout {
     position: relative;
+    top: -15px;
     /*
     Коллаут можно двигать в пространстве
     top: 200px;
