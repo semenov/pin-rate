@@ -32,6 +32,29 @@ $(function() {
         }
     };
 
+    var popup = {
+        show: function(id){
+            $('.popup').fadeIn(200);
+            $('.popup__content').not(id).hide();
+            $(id).show();
+        },
+        hide: function(){
+            $('.popup').fadeOut(200);
+            $('.popup__content').hide();
+        }
+    }
+
+    $('[data-role=show-popup]').click(function(){
+        var curPopup = $(this).attr('data-popup');
+        popup.show('[data-role='+ curPopup +']');
+        return false;
+    });
+
+    $('[data-role=close-popup]').click(function(){
+        popup.close();
+        return false;
+    });
+
     var selectPanel = {
         expand: function() {
             $('#sidebar').addClass('sidebar_select-panel_visible');
