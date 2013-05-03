@@ -60,10 +60,12 @@ $(function() {
     var selectPanel = {
         expand: function() {
             $('#sidebar').addClass('sidebar_select-panel_visible');
+            $('#map').addClass('map_position_e');
         },
 
         collapse: function() {
              $('#sidebar').removeClass('sidebar_select-panel_visible');
+             $('#map').removeClass('map_position_e');
         }
     };
 
@@ -72,11 +74,16 @@ $(function() {
 
         expand: function() {
             $('#result').addClass('result_visible');
+            $('#map').removeClass('map_position_b');
+            $('#map').addClass('map_position_d');
             resultPanel.expanded = true;
         },
 
         collapse: function() {
             $('#result').removeClass('result_visible');
+            $('#map').removeClass('map_position_d');
+            $('#map').addClass('map_position_b');
+            $('.result__toggle').show();
             resultPanel.expanded = false;
         },
 
@@ -124,6 +131,7 @@ $(function() {
     }, 1000);
 
     $('#sidebar_toggle').on('click', function() {
+        selectPanel.collapse();
         sideBar.toggle();       
     });
 
