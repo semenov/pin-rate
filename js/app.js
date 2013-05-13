@@ -37,13 +37,21 @@ $(function() {
 
     var lightbox = {
         show: function(id){
-            $('.popup').fadeIn(200);
             $('.popup__content').not(id).hide();
+            $('.popup').fadeIn(100);
             $(id).show();
+            $(id).addClass('popup__content_open');
         },
         hide: function(){
-            $('.popup').fadeOut(200);
-            $('.popup__content').hide();
+            $('.popup__content').addClass('popup__content_close');
+            setTimeout(function(){
+                $('.popup__content').removeClass('popup__content_close');
+                $('.popup').fadeOut(100);
+                
+            },300);
+            setTimeout(function(){
+                $('.popup__content').removeClass('popup__content_open');
+            },400);
         }
     }
 
