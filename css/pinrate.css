@@ -311,6 +311,12 @@ body {
 .result_visible .icon_toggle {
     background-position: -42px -100px;
 }
+.sidebar .icon_toggle{
+    background-position: -9px -133px;
+}
+.sidebar_visible .icon_toggle{
+    background-position: -9px -100px;
+}
 
 
 /* application */
@@ -457,7 +463,7 @@ body {
     left: 360px;
     max-height: 91%;
     overflow: hidden;
-    padding: 70px 0;
+    padding: 70px 0 25px 0;
     position: absolute;
     top: 0;
     bottom: 0px;
@@ -830,7 +836,7 @@ body {
     position: relative;
     width: 360px;
     position: absolute;
-    bottom: 35px;
+    bottom: 87px;
     top: 300px;
 }
     .results-wrapper .baron-wrapper {
@@ -913,6 +919,8 @@ body {
     text-align: center;
     -webkit-transform-origin: center bottom;
     -webkit-animation: callout 0.2s 1;
+    transform-origin: center bottom;
+    animation: callout 0.2s 1;
 }
 @-webkit-keyframes callout {
     0% {
@@ -923,6 +931,17 @@ body {
     }
     100%{
         -webkit-transform: scale(1);
+    }
+}
+@keyframes callout {
+    0% {
+        transform: scale(0);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
     }
 }
 .callout:after {
@@ -1003,6 +1022,8 @@ body {
     transition: 0.1s all ease-in;
     -webkit-transition: 0.1s all ease-in;
     -webkit-animation: 0.3s close-btn 1;
+    transition: 0.1s all ease-in;
+    animation: 0.3s close-btn 1;
 }
 
  @-webkit-keyframes close-btn {
@@ -1015,7 +1036,18 @@ body {
     100%{
         -webkit-transform: scale(1);
     }
-}   
+}
+@keyframes close-btn {
+    0% {
+        transform: scale(0);
+    }
+    70%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
 .leaflet-container a.leaflet-popup-close-button:hover {
     background: #e34e35;
     width: 10px;
@@ -1170,6 +1202,7 @@ body {
     text-align: center;
     perspective: 2000px;
     -webkit-perspective: 2000px;
+    perspective: 2000px;
     display: none;
     font-size: 14px;
     line-height: 20px;
@@ -1192,13 +1225,15 @@ body {
     position: relative;
 }
 .popup__content_open{
-    -webkit-animation: open 0.3s 1;
+    animation: open_popup 0.3s 1 linear;
+    -webkit-animation: open_popup 0.3s 1;
     opacity: 1;
 }
 .popup__content_close{
+    animation: close 0.3s 1 linear;
     -webkit-animation: close 0.3s 1;
 }
-@-webkit-keyframes open {
+@-webkit-keyframes open_popup {
     0% {
         opacity: 0;
         -webkit-transform: rotateX(100deg) scale(0.6);
@@ -1220,6 +1255,30 @@ body {
     100%{
         opacity: 0;
         -webkit-transform: scale(0.2);
+    }
+}
+@keyframes open_popup {
+    0% {
+        opacity: 0;
+        transform: rotateX(100deg) scale(0.6);
+    }
+    100%{
+        opacity: 1;
+        transform: rotateX(0deg) scale(1);
+    }
+}
+@keyframes close {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100%{
+        opacity: 0;
+        transform: scale(0.2);
     }
 }
 .popup__about{
@@ -1253,19 +1312,21 @@ body {
 }
     .authors__list dt,
     .authors__list dd{
-        box-sizing: border-box;
+
     }
     .authors__list dt{
         float: left;
         width: 50%;
         padding-right: 15px;
         text-align: right;
+        margin-left: -15px;
     }
     .authors__list dd{
         float: right;
         width: 50%;
         padding-left: 15px;
         text-align: left;
+        margin-right: -15px;
     }
  .baron-scroller__bar{
     cursor: pointer;
@@ -1275,4 +1336,33 @@ body {
 .baron-scroller__bar:hover,
 .baron-scroller__bar:active{
     background: #d7d7d7 !important;
+}
+.api-copyright{
+    width: 360px;
+    height: 41px;
+    border-top: 2px solid #636363;
+    bottom: 0px;
+    position: absolute;
+    left: 40px;
+    font-size: 14px;
+    line-height: 22px;
+    padding-top: 22px;
+    text-align: center;
+}
+.api-copyright a{
+    color: #959595;
+    -webkit-transition: 0.1s all linear;
+    transition: 0.1s all linear;
+}
+.api-copyright a:hover{
+    color: #fff;
+}
+.api-copyright__icon{
+    background: url('../i/app-sprite.png') -12px -235px no-repeat;
+    width: 52px;
+    height: 22px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 25px;
+    margin-top: -3px;
 }

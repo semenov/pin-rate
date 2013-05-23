@@ -1,5 +1,5 @@
 $(function() {
-
+    $('#address_address').focus();
     var map;
     var projectId = 1;
     var projectName = 'Новосибирск';
@@ -46,12 +46,12 @@ $(function() {
             $('.popup__content').addClass('popup__content_close');
             setTimeout(function(){
                 $('.popup__content').removeClass('popup__content_close');
-                $('.popup').fadeOut(100);
+                $('.popup').fadeOut(50);
                 
             },300);
             setTimeout(function(){
                 $('.popup__content').removeClass('popup__content_open');
-            },400);
+            },350);
         }
     }
 
