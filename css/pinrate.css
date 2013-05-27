@@ -308,16 +308,30 @@ body {
 .result .icon_toggle {
     background-position: -9px -100px;
 }
+.result .icon_toggle{
+    background-position: -42px -133px;
+}
+.result .icon_toggle:hover{
+    background-position: -42px -199px;   
+}
 .result_visible .icon_toggle {
     background-position: -42px -100px;
+}
+.result_visible .icon_toggle:hover {
+    background-position: -42px -166px;
 }
 .sidebar .icon_toggle{
     background-position: -9px -133px;
 }
+.sidebar .icon_toggle:hover{
+    background-position: -9px -199px;
+}
 .sidebar_visible .icon_toggle{
     background-position: -9px -100px;
 }
-
+.sidebar_visible .icon_toggle:hover{
+    background-position: -9px -166px;
+}
 
 /* application */
 .application {
@@ -405,7 +419,7 @@ body {
     left: 700px;
 }
 .map_position_d {
-    right: 440px;
+    left: -440px;
 }
 
 /* result */
