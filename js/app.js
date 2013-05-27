@@ -66,6 +66,10 @@ $(function() {
         return false;
     });
 
+    $('.popup .social_result .icon').click(function(){
+        lightbox.hide();
+    });
+
     var selectPanel = {
         expand: function() {
             $('#sidebar').addClass('sidebar_select-panel_visible');
