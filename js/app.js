@@ -10,7 +10,7 @@ $(function() {
 
     //msk
     var projectId = 32;
-    var projectCentroid = [37.62017, 55.753466];
+    var projectCentroid = [55.753466, 37.62017];
     var projectZoomLevel = 11;
     var projectName = 'Москва';
 
@@ -289,10 +289,6 @@ $(function() {
     //geolocation, bleat
     if (navigator.geolocation) {
 
-        //show preloader
-        $("#preloader").show();
-        $("#application").addClass('app_blured');
-
         navigator.geolocation.getCurrentPosition(
             function(position) {
 
@@ -316,26 +312,12 @@ $(function() {
 
                                 setProject(id);
 
-                                //hide preloader
-                                $("#preloader").hide();
-                                $("#application").removeClass('app_blured');
-                                showSidebar();
                             });
-                        } else {
-                            //hide preloader
-                            $("#preloader").hide();
-                            $("#application").removeClass('app_blured');
-                            showSidebar();
                         }
                 });
             },
             function(error) {
                 console.log('Geolocation error', error);
-
-                //hide preloader
-                $("#preloader").hide();
-                $("#application").removeClass('app_blured');
-                showSidebar();
             },
             {
                 enableHighAccuracy: false,
@@ -343,9 +325,9 @@ $(function() {
                 maximumAge: 0
             }
         );
-    } else {
-        showSidebar();
     }
+
+    showSidebar();
 
     map.on('click', function(e) {
         var point = e.latlng;
