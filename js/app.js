@@ -1,8 +1,19 @@
 $(function() {
     $('#address_address').focus();
     var map;
-    var projectId = 1;
-    var projectName = 'Новосибирск';
+
+    //nsk
+    //var projectId = 1;
+    //var projectCentroid = [55.026472, 82.921475];
+    //var projectZoomLevel = 13;
+    //var projectName = 'Новосибирск';
+
+    //msk
+    var projectId = 32;
+    var projectCentroid = [37.62017, 55.753466];
+    var projectZoomLevel = 11;
+    var projectName = 'Москва';
+
     var housesById = {};
     var popup;
     var projectsById = {};
@@ -143,11 +154,6 @@ $(function() {
 
     $('#map').addClass('map_position_b');
 
-    window.setTimeout(function() {
-        sideBar.expand();
-        //selectPanel.expand();
-    }, 1000);
-
     $('#sidebar_toggle').on('click', function() {
         selectPanel.collapse();
         sideBar.toggle();       
@@ -221,11 +227,11 @@ $(function() {
         calculateRating(house);  
     });
 
-    $('body').on('click', '.city_link', function(e) {
-        e.preventDefault();
+    function setProject(id) {
 
-        projectId = $(this).data('id'); 
+        if(id == projectId) return;
 
+        projectId = id;
 
         project = projectsById[projectId];
         projectName = project.name;
@@ -237,10 +243,34 @@ $(function() {
         console.log(point);
 
         map.setView([point.lon, point.lat], project.zoomlevel);
+    }
+
+    $('body').on('click', '.city_link', function(e) {
+        e.preventDefault();
+
+        setProject($(this).data('id'));
+        /*projectId = $(this).data('id'); 
+
+
+        project = projectsById[projectId];
+        projectName = project.name;
+        $('#show_cityselect').text(project.name);
+
+        var point = parsePoint(project.centroid);
+
+        console.log(project);
+        console.log(point);
+
+        map.setView([point.lon, point.lat], project.zoomlevel);*/
         selectPanel.collapse(); 
     });
 
-    // .select-panel__list_cityselect .list__item
+    function showSidebar() {
+        window.setTimeout(function() {
+            sideBar.expand();
+            //selectPanel.expand();
+        }, 1000);
+    }
 
     var mapOptions = {
         zoomControl: false
@@ -253,8 +283,69 @@ $(function() {
 
     map = L.map('map', mapOptions);
     L.tileLayer(tileUrlFormat, urlFormatOptions).addTo(map);
-    map.setView([55.026472, 82.921475], 13);
+    map.setView(projectCentroid, projectZoomLevel);
     console.log('Map inited');
+
+    //geolocation, bleat
+    if (navigator.geolocation) {
+
+        //show preloader
+        $("#preloader").show();
+        $("#application").addClass('app_blured');
+
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+
+                //get project ID by coordinates
+                var params = {
+                        q: position.coords.longitude + ',' + position.coords.latitude,
+                        key: api_key,
+                        output: 'jsonp',
+                        version: '1.3',
+                        types: 'project'
+                };
+                $.getJSON('http://catalog.api.2gis.ru/geo/search?callback=?', params, function(data) {
+
+                        if( data.response_code == '200' ) {
+                            var id = data.result[0].project_id;
+                            getProjects(function(err, projects) {
+                                for (var i = 0; i < projects.length; i++) {
+                                    var project = projects[i];
+                                    projectsById[project.id] = project;
+                                }
+
+                                setProject(id);
+
+                                //hide preloader
+                                $("#preloader").hide();
+                                $("#application").removeClass('app_blured');
+                                showSidebar();
+                            });
+                        } else {
+                            //hide preloader
+                            $("#preloader").hide();
+                            $("#application").removeClass('app_blured');
+                            showSidebar();
+                        }
+                });
+            },
+            function(error) {
+                console.log('Geolocation error', error);
+
+                //hide preloader
+                $("#preloader").hide();
+                $("#application").removeClass('app_blured');
+                showSidebar();
+            },
+            {
+                enableHighAccuracy: false,
+                timeout:  10 * 1000 * 1000,
+                maximumAge: 0
+            }
+        );
+    } else {
+        showSidebar();
+    }
 
     map.on('click', function(e) {
         var point = e.latlng;
@@ -476,7 +567,7 @@ $(function() {
             setTimeout(function() {
                 console.log('socialShown', $.cookie('socialShown'));
                 if ($.cookie('socialShown') === undefined) {
-                    $.cookie('socialShown', true, { expires: 365, path: '/' });
+                    $.cookie('socialShown', true, {expires: 365, path: '/'});
                     lightbox.show('[data-role=social-popup]');
                 }
                 
