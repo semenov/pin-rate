@@ -1380,3 +1380,37 @@ body {
     margin-right: 25px;
     margin-top: -3px;
 }
+.map-copyright{
+    position: absolute;
+    left: -182px;
+    width: 182px;
+    height: 26px;
+    padding-top: 3px;
+    bottom: 0px;
+    line-height: 10px;
+}
+.map-copyright__work{
+    background: url('../i/2gis_maps_copyright.png') -29px -2px no-repeat;
+    display: inline-block;
+    position: relative;
+    left: 28px;
+    width: 84px;
+    height: 10px;
+}
+.map-copyright__license{
+    background: url('../i/2gis_maps_copyright.png') -0px -12px no-repeat;
+    display: inline-block;
+    width: 112px;
+    height: 10px;
+}
+.map-copyright__logo{
+    width: 56px;
+    height: 26px;
+    background: url('../i/2gis_maps_copyright.png') -303px -0px no-repeat;
+    position: absolute;
+    right: 10px;
+    top: -1px;
+}
+.leaflet-control-attribution{
+    display: none;
+}
