@@ -916,7 +916,8 @@ body {
 
 .callout {
     position: relative;
-    top: -15px;
+    top: -12px;
+    left: 1px;
     /*
     Коллаут можно двигать в пространстве
     top: 200px;
@@ -1008,7 +1009,7 @@ body {
 .icon_pinrate_map {
     width: 36px;
     height: 45px;
-    margin: -3px 0 0 -6px;
+    margin: -3px 0 0 -7px;
     background: url(../i/markers/pin.png) no-repeat;
 }
 
@@ -1023,7 +1024,7 @@ body {
 }
 .leaflet-container a.leaflet-popup-close-button {
     position: absolute;
-    top: -10px;
+    top: -7px;
     right: 6px;
     text-align: center;
     width: 8px;
@@ -1066,7 +1067,7 @@ body {
     background: #e34e35;
     width: 10px;
     height: 10px;
-    top: -11px;
+    top: -8px;
     right: 5px;
     border-radius: 5px;
     }
