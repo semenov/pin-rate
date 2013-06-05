@@ -1309,6 +1309,9 @@ body {
     .popup__about-text{
         margin-bottom: 40px;
     }
+    .popup__about-text_big{
+        font-size: 16px;
+    }
     .popup__about a{
         white-space: nowrap;
         border-bottom: 1px solid #f8b5a7;
@@ -1355,7 +1358,7 @@ body {
 .api-copyright{
     width: 360px;
     height: 41px;
-    border-top: 2px solid #636363;
+    border-top: 1px solid #636363;
     bottom: 0px;
     position: absolute;
     left: 40px;
