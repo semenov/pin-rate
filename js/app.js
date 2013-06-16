@@ -553,7 +553,7 @@ $(function() {
                     lightbox.show('[data-role=social-popup]');
                 }
                 
-            }, 30000)
+            }, 60000)
         });
     }
 
