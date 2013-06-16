@@ -287,7 +287,7 @@ $(function() {
     console.log('Map inited');
 
     //geolocation, bleat
-    if (navigator.geolocation) {
+    /*if (navigator.geolocation) {
 
         navigator.geolocation.getCurrentPosition(
             function(position) {
@@ -325,7 +325,7 @@ $(function() {
                 maximumAge: 0
             }
         );
-    }
+    }*/
 
     showSidebar();
 
