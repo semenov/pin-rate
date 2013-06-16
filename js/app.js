@@ -631,6 +631,9 @@ $(function() {
             if(firms[pinIndex].firms) {
                 $.each(firms[pinIndex].firms, function (firmsIndex, firmsValue) {
 
+                    //crutch - removing bank and atm icons
+                    if( pinRubrics[pinIndex].idetify == 'icon_ATM' || pinRubrics[pinIndex].idetify == 'icon_bank' ) return;
+
                     var img_ident = /icon_(.*)/.exec(pinRubrics[pinIndex].idetify);
                     var icon = L.divIcon({
                         iconSize: [32, 37],
