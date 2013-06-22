@@ -7,12 +7,20 @@ $(function() {
     //var projectCentroid = [55.026472, 82.921475];
     //var projectZoomLevel = 13;
     //var projectName = 'Новосибирск';
-
+    //---
     //msk
     var projectId = 32;
     var projectCentroid = [55.753466, 37.62017];
     var projectZoomLevel = 11;
     var projectName = 'Москва';
+
+    //TODO: переделать эту схему с cityCenterData на projectList от вебапи!
+    if( cityCenterData[detectedCity] ) {
+        projectId = cityCenterData[detectedCity].id;
+        projectCentroid = [cityCenterData[detectedCity].lat, cityCenterData[detectedCity].lon];
+        projectZoomLevel = cityCenterData[detectedCity].zoom;
+        projectName = cityCenterData[detectedCity].name;
+    }
 
     var housesById = {};
     var popup;

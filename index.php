@@ -16,6 +16,45 @@
 
     <link rel="icon" type="image/png" href="i/favicon.png" />
 
+    <?php
+		/**
+		 * Dev mode
+		 */
+		$devmode = !empty($_GET['debug']) ? $_GET['debug'] : false;
+		$devip = !empty($_GET['devip']) ? $_GET['devip'] : '';
+
+		/**
+		 * Try to get location via GeoIP
+		 */
+		require_once('backend/sxgeo/SxGeo.php');
+
+		$sxgeo = new SxGeo('backend/sxgeo/SxGeoCity.dat', SXGEO_BATCH | SXGEO_MEMORY);
+		if ($devmode & $devip) {
+			$reqIP = $devip;
+		} else {
+			$reqIP = $_SERVER['REMOTE_ADDR'];
+		}
+		$result = $sxgeo->get($reqIP);
+
+
+		if ($result['city']) {
+			$cyr  = array('а','б','в','г','д','е','ж','з','и','й','к','л','м','н','о','п','р','с','т','у', 
+		        'ф','х','ц','ч','ш','щ','ъ','ь', 'ю','я','А','Б','В','Г','Д','Е','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У',
+		        'Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ь', 'Ю','Я');
+	        $lat = array( 'a','b','v','g','d','e','zh','z','i','y','k','l','m','n','o','p','r','s','t','u',
+		        'f' ,'h' ,'ts' ,'ch','sh' ,'sh' ,'a' ,'y' ,'yu' ,'ya','A','B','V','G','D','E','Zh',
+		        'Z','I','Y','K','L','M','N','O','P','R','S','T','U',
+		        'F' ,'H' ,'Ts' ,'Ch','Sh' ,'Sht' ,'A' ,'Y' ,'Yu' ,'Ya');
+			$city = str_replace($cyr, $lat, $result['city']);
+			$city = strtolower($city);
+		} elseif ($result['country'] == 'KZ') {
+			$city = 'almaty';
+		} else {
+			$city = 'NOT_FOUND';
+		}
+	?>
+    <script>var detectedCity = '<?php echo($city); ?>';</script>
+
     <?php if(!empty($_GET['debug'])) { ?>
     <!--script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script-->
     <script src="js/leaflet.js"></script>

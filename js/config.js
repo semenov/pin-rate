@@ -403,3 +403,124 @@ var special_labels = {
     'Карла Маркса площадь, 7':	'Огонь!'
 };
 var metro_projects = [32,38,19,1,9,18,21];
+var cityCenterData = {
+	'moskva': {
+		lon: 	37.620375,
+		lat: 	55.754977,
+		zoom: 	11,
+        name:   'Москва',
+        id:     32  
+	},
+	'sankt-peterburg': {
+		lon: 	30.311106,
+		lat: 	59.933976,
+		zoom: 	13,
+        name:   'Санкт-Петербург',
+        id:     38
+	},
+	'novosibirsk': {
+		lon: 	82.929874,
+		lat: 	55.029291,
+		zoom: 	13,
+        name:   'Новосибирск',
+        id:     1
+	},
+	'ekaterinburg': {
+		lon: 	60.622362,
+		lat: 	56.839037,
+		zoom: 	13,
+        name:   'Екатеринбург',
+        id:     9
+	},
+	'nnovgorod': {
+		lon: 	44.010896,
+		lat: 	56.325762,
+		zoom: 	13,
+        name:   'Нижний Новгород',
+        id:     19
+	},
+	'samara': {
+		lon: 	50.135427,
+		lat: 	53.206593,
+		zoom: 	13,
+        name:   'Самара',
+        id:     18
+	},
+	'kazan': {
+		lon: 	49.110685,
+		lat: 	55.799438,
+		zoom: 	13,
+        name:   'Казань',
+        id:     21
+	},
+	'omsk': {
+		lon: 	73.417934,
+		lat: 	54.973073,
+		zoom: 	13,
+        name:   'Омск',
+        id:     2
+	},
+	'chelyabinsk': {
+		lon: 	61.396944,
+		lat: 	55.171472,
+		zoom: 	13,
+        name:   'Челябинск',
+        id:     15
+	},
+	'rostov': {
+		lon: 	39.774616,
+		lat: 	47.248286,
+		zoom: 	13,
+        name:   'Ростов-на-Дону',
+        id:     24
+	},
+	'ufa': {
+		lon: 	55.962389,
+		lat: 	54.739789,
+		zoom: 	13,
+        name:   'Уфа',
+        id:     17
+	},
+	'volgograd': {
+		lon: 	44.522698,
+		lat: 	48.707928,
+		zoom: 	13,
+        name:   'Волгоград',
+        id:     33
+	},
+	'permy': {
+		lon: 	56.251051,
+		lat: 	58.014455,
+		zoom: 	13,
+        name:   'Пермь',
+        id:     16
+	},
+	'krasnoyarsk': {
+		lon: 	92.913115,
+		lat: 	56.04226,
+		zoom: 	13,
+        name:   'Красноярск',
+        id:     7
+	},
+	'almaty': {
+		lon: 	76.928224,
+		lat: 	43.237414,
+		zoom: 	13,
+        name:   'Алматы',
+        id:     67
+	},
+	'odessa': {
+		lon: 	30.7451,
+		lat: 	46.466709,
+		zoom: 	13,
+        name:   'Одесса',
+        id:     14
+	},
+	'vladivostok': {
+		lon: 	131.887618,
+		lat: 	43.115366,
+		zoom: 	13,
+        name:   'Владивосток',
+        id:     25
+	}
+};
