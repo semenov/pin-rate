@@ -20,6 +20,7 @@ $(function() {
         projectCentroid = [cityCenterData[detectedCity].lat, cityCenterData[detectedCity].lon];
         projectZoomLevel = cityCenterData[detectedCity].zoom;
         projectName = cityCenterData[detectedCity].name;
+        $('#show_cityselect').text(projectName);
     }
 
     var housesById = {};
