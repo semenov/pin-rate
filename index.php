@@ -251,7 +251,7 @@
                     <dt><a href="http://dmitrienkop.moikrug.ru/">Петр Дмитриенко</a></dt>
                     <dd>frontend</dd>
                     <dt><a href="http://okatev.ru">Евгений Окатьев</a></dt>
-                    <dd>forntend магия</dd>
+                    <dd>frontend магия</dd>
                     <dt><a href="#">Дмитрий Кузнецов</a></dt>
                     <dd>frontend</dd>
                     <dt><a href="https://twitter.com/sereje4kin">Сергей Коломенкин</a></dt>
