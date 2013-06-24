@@ -140,14 +140,18 @@ $(function() {
         },
 
         url: 'http://pinrate.ru/',
+        title: 'Инфраструктура и рейтинг дома — PIN RATE',
+        image: 'http://pinrate.ru/i/pin.png',
 
         twiUrl: function(rating, text) {
             var msg = social.makeMessage(rating, text);
             return 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(social.url) + '&text=' + encodeURIComponent(msg);
         },
 
-        fbUrl: function(rating) {
-            return 'http://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(social.url)
+        fbUrl: function(rating, text) {
+            var msg = social.makeMessage(rating, text);
+            //return 'http://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(social.url)
+            return 'http://www.facebook.com/sharer.php?s=100&p[title]='+encodeURIComponent(social.title) + '&p[summary]=' + encodeURIComponent(msg) + '&p[url]=' + encodeURIComponent(social.url) + '&p[images][0]=' + encodeURIComponent(social.image);
         },
 
         vkUrl: function(rating, text) {
