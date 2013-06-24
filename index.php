@@ -220,7 +220,7 @@
                 </div>
             </div>
             <div class="api-copyright">
-                <a href=""><i class="api-copyright__icon"></i></a>Сайт работает на <a href="http://api.2gis.ru" target="_blank">API 2GIS</a>
+                <a href="http://2gis.ru"><i class="api-copyright__icon"></i></a>Сайт работает на <a href="http://api.2gis.ru" target="_blank">API 2GIS</a>
             </div>
             <div class="map-copyright">
                 <a href="http://api.2gis.ru/?utm_source=copyright&utm_medium=map&utm_campaign=partners" target="_blank" class="map-copyright__work"></a><br/>
