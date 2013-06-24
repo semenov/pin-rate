@@ -242,21 +242,21 @@
                 </p>
                 <h2>Команда</h2>
                 <dl class="authors__list popup__about-text">
-                    <dt><a href="">Евгений Чертенков</a></dt>
+                    <dt><a href="https://twitter.com/24ds">Евгений Чертенков</a></dt>
                     <dd>Дизайн</dd>
-                    <dt><a href="">Игорь Кривчун</a></dt>
+                    <dt><a href="http://ikrivchun.moikrug.ru/">Игорь Кривчун</a></dt>
                     <dd>backend</dd>
-                    <dt><a href="">Влад Семенов</a></dt>
+                    <dt><a href="https://twitter.com/semenov">Влад Семенов</a></dt>
                     <dd>backend</dd>
-                    <dt><a href="">Петр Дмитриенко</a></dt>
+                    <dt><a href="http://dmitrienkop.moikrug.ru/">Петр Дмитриенко</a></dt>
                     <dd>frontend</dd>
-                    <dt><a href="">Евгений Окатьев</a></dt>
+                    <dt><a href="http://okatev.ru">Евгений Окатьев</a></dt>
                     <dd>forntend магия</dd>
-                    <dt><a href="">Дмитрий Кузнецов</a></dt>
+                    <dt><a href="#">Дмитрий Кузнецов</a></dt>
                     <dd>frontend</dd>
-                    <dt><a href="">Сергей Коломенкин</a></dt>
+                    <dt><a href="https://twitter.com/sereje4kin">Сергей Коломенкин</a></dt>
                     <dd>менеджер</dd>
-                    <dt><a href="">Дина Березина</a></dt>
+                    <dt><a href="https://twitter.com/dkondrateva">Дина Березина</a></dt>
                     <dd>аналитик</dd>
                 </dl>
                 <p>По любым вопросам обращайтесь по адресу <a href="mailto: wassup@pinrate.ru">wassup@pinrate.ru</a></p>
