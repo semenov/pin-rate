@@ -68,7 +68,8 @@
     <script src="js/config.js"></script>
     <script src="js/app.js"></script>
     <?php } else { ?>
-    <script src="min/b=js&f=leaflet.js,leaflet.markercluster.js,jquery.min.js,jquery.cookie.js,jquery.placeholder.js,async.js,handlebars.js,baron.min.js,config.js,app.js"></script>
+    <?php /*<script src="min/b=js&f=leaflet.js,leaflet.markercluster.js,jquery.min.js,jquery.cookie.js,jquery.placeholder.js,async.js,handlebars.js,baron.min.js,config.js,app.js"></script>*/ ?>
+    <script src="/js/app.min.js"></script>
     <?php } ?>
     <script>
         $(document).ready(function() {
