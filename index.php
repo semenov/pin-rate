@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
     <!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.ie.css" /><![endif]-->
     <link rel="stylesheet" href="css/MarkerCluster.css" />
-    <link rel="stylesheet" href="css/pinrate.css" media="all" />
+    <link rel="stylesheet" href="css/pinrate.css<?php echo('?'.rand()); ?>" media="all" />
     <link rel="stylesheet" href="css/baron.css" media="all" />
 
     <link rel="icon" type="image/png" href="i/favicon.png" />
