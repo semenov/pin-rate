@@ -1116,6 +1116,12 @@ body {
     -webkit-animation: ring 0.8s infinite;
     animation: ring 0.8s infinite;
 }
+pin-loader__percent {
+    padding-top: 14px;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+}
 .app_blured{
     -webkit-filter: blur(3px);
 }

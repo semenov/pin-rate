@@ -85,7 +85,7 @@
 </head>
 <body>
     <div id="preloader" style="">
-        <i class="pin-loader__center"></i>
+        <i class="pin-loader__center"><div class="pin-loader__percent"></div></i>
         <i class="pin-loader__ring"></i>
     </div>
 

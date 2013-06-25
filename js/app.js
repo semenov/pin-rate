@@ -441,6 +441,12 @@ $(function() {
         var point_parsed = parsePoint(house.centroid),
             point = point_parsed.lat + ',' + point_parsed.lon;
 
+        var percent_searchesCompleted = 0,//поисков выполнено
+            percent_totalSearches = 0;//всего поисков
+        function writePercentage() {
+            $('.pin-loader__percent').html(parseInt( 100 / percent_totalSearches * percent_searchesCompleted ) + '%');
+        }
+
         var searches = [];
         var results = [];
         $.each(pinRubrics, function(pinIndex, pinValue) {
@@ -469,6 +475,9 @@ $(function() {
                         results[pinIndex].total += data.response_code == '200' ? parseInt(data.total) : 0;
                         results[pinIndex].firms = data.result;
 
+                        percent_searchesCompleted++;
+                        writePercentage();
+
                         callback();
                     });
                 }
@@ -490,9 +499,11 @@ $(function() {
                 };
                 $.getJSON('http://catalog.api.2gis.ru/geo/search?callback=?', params, function(data) {
 
-                    console.log(data);
                     if(data.response_code == '200')
                         metro_coefficient = 10;                    
+
+                    percent_searchesCompleted++;
+                    writePercentage();
 
                     callback();
                 });
@@ -500,12 +511,14 @@ $(function() {
             searches.push(metroSearchFunction);
         }
 
+        percent_totalSearches = searches.length; //количество добавленных поисков
 
         $("#preloader").show();
         $("#application").addClass('app_blured');
+        writePercentage();
 
-        //async.series(searches, function() {
-        async.parallel(searches, function() {
+        async.series(searches, function() {
+        //async.parallel(searches, function() {
             var rating = 0;
             $.each(pinRubrics, function(index, value) {                
                 $( '.icon.' + pinRubrics[index].idetify + ' ~ span span' ).html( results[index].total );
