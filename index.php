@@ -152,7 +152,7 @@
         <div class="result" id="result">
             <div class="result__in">
                 <span class="result__toggle" id="result_toggle">
-                    <icon class="icon icon_toggle"></icon>
+                    <ins class="icon icon_toggle"></ins>
                 </span>
                 <div id="results-header" class="result__header">    
                     <div class="rate">
