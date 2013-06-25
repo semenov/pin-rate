@@ -444,7 +444,7 @@ $(function() {
         var percent_searchesCompleted = 0,//поисков выполнено
             percent_totalSearches = 0;//всего поисков
         function writePercentage() {
-            $('.pin-loader__percent').html(parseInt( 100 / percent_totalSearches * percent_searchesCompleted ) + '%');
+            $('.pin-loader__percent').html(parseInt( 100 / percent_totalSearches * percent_searchesCompleted ));
         }
 
         var searches = [];
