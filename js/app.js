@@ -436,6 +436,9 @@ $(function() {
     }
 
     function calculateRating(house) {
+        if (yaCounter) {
+            yaCounter.reachGoal('startCalculate');
+        }
         console.log('Calculating rating', house);
 
         var point_parsed = parsePoint(house.centroid),
@@ -519,6 +522,11 @@ $(function() {
 
         async.series(searches, function() {
         //async.parallel(searches, function() {
+
+            if (yaCounter) {
+                yaCounter.reachGoal('finishCalculate');
+            }
+
             var rating = 0;
             $.each(pinRubrics, function(index, value) {                
                 $( '.icon.' + pinRubrics[index].idetify + ' ~ span span' ).html( results[index].total );
