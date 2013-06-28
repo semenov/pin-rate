@@ -555,7 +555,7 @@ $(function() {
             placeMarkers(results, house);
             $('[data-role=rate_address]').html(house.name);
             if(special_labels[projectId] && special_labels[projectId][house.name] != undefined) { //special labels
-                description = special_labels[house.name];
+                description = special_labels[projectId][house.name];
                 $('[data-role=rate_description]').html(description);
             } else {
                 $.each(rating_labels, function(index, value) {
