@@ -264,7 +264,7 @@
             </div>
         </div>
         <div class="popup__content" data-role="social-popup">
-            <!--<a href="#" data-role="close-popup" class="icon icon icon_close-popup">Закрыть</a>-->
+            <a href="#" data-role="close-popup" class="icon icon icon_close-popup">Закрыть</a>
             <p class="popup__about-text popup__about-text_big">
                     Расскажите своим друзьям про Pin Rate.<br/>(и да будут вам лучи почёта от нашей команды)
             </p>
