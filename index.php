@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
     <!--[if lte IE 8]><link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.ie.css" /><![endif]-->
     <link rel="stylesheet" href="css/MarkerCluster.css" />
-    <link rel="stylesheet" href="css/pinrate.css<?php echo('?'.rand()); ?>" media="all" />
+    <link rel="stylesheet" href="css/pinrate.css<?php echo( '?' . md5_file(realpath(dirname(__FILE__)).DIRECTORY_SEPARATOR.'css'.DIRECTORY_SEPARATOR.'pinrate.css') ); ?>" media="all" />
     <link rel="stylesheet" href="css/baron.css" media="all" />
 
     <link rel="icon" type="image/png" href="i/favicon.png" />
@@ -69,7 +69,7 @@
     <script src="js/app.js"></script>
     <?php } else { ?>
     <?php /*<script src="min/b=js&f=leaflet.js,leaflet.markercluster.js,jquery.min.js,jquery.cookie.js,jquery.placeholder.js,async.js,handlebars.js,baron.min.js,config.js,app.js"></script>*/ ?>
-    <script src="/js/app.min.js"></script>
+    <script src="/js/app.min.js<?php echo( '?' . md5_file(realpath(dirname(__FILE__)).DIRECTORY_SEPARATOR.'js'.DIRECTORY_SEPARATOR.'app.min.js') ); ?>"></script>
     <?php } ?>
     <script>
         $(document).ready(function() {
