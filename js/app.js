@@ -436,8 +436,8 @@ $(function() {
     }
 
     function calculateRating(house) {
-        if (yaCounter) {
-            yaCounter.reachGoal('startCalculate');
+        if (yaCounter21122095) {
+            yaCounter21122095.reachGoal('startCalculate');
         }
         console.log('Calculating rating', house);
 
@@ -523,8 +523,8 @@ $(function() {
         async.series(searches, function() {
         //async.parallel(searches, function() {
 
-            if (yaCounter) {
-                yaCounter.reachGoal('finishCalculate');
+            if (yaCounter21122095) {
+                yaCounter21122095.reachGoal('finishCalculate');
             }
 
             var rating = 0;
@@ -554,7 +554,7 @@ $(function() {
 
             placeMarkers(results, house);
             $('[data-role=rate_address]').html(house.name);
-            if(special_labels[house.name] != undefined && projectId == 1) { //special labels for nsk
+            if(special_labels[projectId] && special_labels[projectId][house.name] != undefined) { //special labels
                 description = special_labels[house.name];
                 $('[data-role=rate_description]').html(description);
             } else {
